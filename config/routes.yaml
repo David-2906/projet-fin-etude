@@ -3,3 +3,23 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+# Routes de notre application
+
+# Controller : HomeController
+
+# Appelle la page d'accueil
+app_home:
+    path: /
+    controller: App\Controller\HomeController
+    methods: GET|POST
+
+
+
+
+
+
+
+
+
+#---------------------------------------------------
