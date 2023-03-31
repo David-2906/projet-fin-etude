@@ -1,0 +1,27 @@
+{# Donne une petite colonne de droite #}
+
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8 right-column-layout-left">
+
+                {% block contentLeftColumn %}{% endblock %}
+
+            </div>
+
+            <div class="col-md-4 right-column-layout-right">
+
+                {% block contentRightColumn %}{% endblock %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

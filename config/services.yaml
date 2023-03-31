@@ -5,8 +5,21 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
 
+# environnement
+    app_param_env: "%env(APP_ENV)%"
+
+# -----------------------------------
+# Id de la balise body pour chaque page du site
+
+    HOME_PAGE: "home"
+    LEGAL_PAGE: "mentions"
+    COOKIE_PAGE: "cookie"
+
 services:
     # default configuration for services in *this* file
+    # autowire: autocablage 
+    # L'injection de dépendances de service au niveau du constructeur crée une variable contenant un objet qui devient global à toutes
+    # les methodes de la classe grace à la techno de l'auto-cablage
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.

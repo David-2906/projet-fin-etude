@@ -11,13 +11,21 @@ controllers:
 # Appelle la page d'accueil
 app_home:
     path: /
-    controller: App\Controller\HomeController
+    controller: App\Controller\HomeController::index
     methods: GET|POST
 
+# Pages statiques
+
+app_legal:
+    path: /mentions
+    controller: App\Controller\StaticController::mentionsLegales
+    methods: GET
 
 
-
-
+app_cookies:
+    path: /confidentialite
+    controller: App\Controller\StaticController::politiqueCookies
+    methods: GET
 
 
 

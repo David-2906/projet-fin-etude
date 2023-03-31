@@ -1,5 +1,10 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    file_name_pattern: ['*.twig'] 
+    form_themes: ['bootstrap_5_layout.html.twig']
+
+    # file name pattern : restreint l'execution de twig au fichier dont l'extension est .twig
+    # form theme ; permet de donner un style par default aux formulaires pour ne pas lire du HTML pure
 
 when@test:
     twig:
