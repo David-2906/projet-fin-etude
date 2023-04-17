@@ -66,3 +66,8 @@ app_inscription:
     path: /inscription
     controller: App\Controller\InscriptionController::inscription
     methods: GET|POST
+
+app_commande:
+    path: /commande
+    controller: App\Controller\CommandeController::commande
+    methods: GET|POST
