@@ -1,0 +1,49 @@
+.footer {
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    color: goldenrod;
+    margin-right: 1.5rem;
+
+}
+
+.left-footer-menu li {
+    font-size: 1rem;
+    list-style-type: none;
+    line-height: 2rem;
+    text-align: start;
+    
+}
+
+.right-footer-menu li {
+    font-size: 1rem;
+    list-style-type: none;
+    line-height: 2rem;
+    text-align: end;
+}
+
+
+.footer-footer {
+    font-size: 1.5rem;
+}
+
+.paragraph {
+    text-align: center;
+    color:goldenrod;
+}
+
+i {
+    color:#ffffff;
+    padding: 0.5em;
+}
+
+a, a:visited {
+    color:#ffffff;
+    text-decoration: none;
+}
+
+@media (max-width:769px) {
+    .footer-footer{
+        font-size: 1rem;
+    }
+}

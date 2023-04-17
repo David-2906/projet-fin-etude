@@ -6,6 +6,10 @@ twig:
     # file name pattern : restreint l'execution de twig au fichier dont l'extension est .twig
     # form theme ; permet de donner un style par default aux formulaires pour ne pas lire du HTML pure
 
+
+# globals
+
+
 when@test:
     twig:
         strict_variables: true

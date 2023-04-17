@@ -3,11 +3,26 @@
 {% block title %}Page Accueil{% endblock %}
 
 {% block body %}
-    <div {{stimulus_controller("say-hello")}}>
+    {# <div {{stimulus_controller("say-hello")}}>
         <input type="text" {{stimulus_target("say-hello","name")}}>
         <button {{stimulus_action("say-hello", "greet")}}>Dire Hello</button> 
     
 
     <div {{stimulus_target("say-hello", "output")}}></div>
+    </div> #}
+    <div class="accueil">
+        <h2>Bienvenue sur Le domaine du roi</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum fugiat eveniet sunt hic quis? Ab autem libero
+            velit? Laudantium quidem nobis, sed blanditiis molestiae eos, consequatur cupiditate illo assumenda et iure
+            aspernatur, itaque ex veniam inventore magni labore! Eos assumenda dolorem voluptatum dolores natus
+            incidunt, maxime, in tenetur debitis maiores omnis cupiditate at. Reprehenderit voluptatem eligendi
+            cupiditate? Fugiat magni nihil ullam quos eius amet omnis debitis rem voluptatibus minima. Veniam, nihil
+            aperiam nisi harum, ab magnam minima odio doloremque qui porro molestias ipsum repellendus est facere
+            impedit aut sapiente quos fuga corrupti totam eius deleniti sed. Iste, blanditiis voluptate, similique ad
+            quaerat quam voluptatem autem sequi fugiat earum rerum? Architecto, iste! Fugit ducimus quo mollitia hic
+            </p>
+
+        <img class='img-accueil'src="{{ asset('./assets/img/image-accueil.jpg') }}" alt="Une image d'un verre de champagne">
     </div>
+
 {% endblock %}

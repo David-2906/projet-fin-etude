@@ -27,7 +27,42 @@ app_cookies:
     controller: App\Controller\StaticController::politiqueCookies
     methods: GET
 
+app_about:
+    path: /qui-sommes-nous
+    controller: App\Controller\StaticController::about
+    methods: GET
 
+app_cgv:
+    path: /conditions-generales-ventes
+    controller: App\Controller\StaticController::cgv
+    methods: GET
+
+app_utilisation:
+    path: /conditions-utilisations
+    controller: App\Controller\StaticController::utilisation
+    methods: GET
 
 
 #---------------------------------------------------
+
+app_champagne:
+    path: /champagnes
+    controller: App\Controller\ChampagneController::champagne
+    methods: GET
+
+
+app_connexion:
+    path: /connexion
+    controller: App\Controller\ConnexionController::connexion
+    methods: GET|POST
+
+
+app_panier:
+    path: /monpanier
+    controller: App\Controller\PanierController::index
+    methods: GET|POST
+
+app_inscription:
+    path: /inscription
+    controller: App\Controller\InscriptionController::inscription
+    methods: GET|POST

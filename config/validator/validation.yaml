@@ -1,0 +1,223 @@
+App/Entity/User:
+  properties:
+    email:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 3
+          max: 255
+          minMessage: Le champ email doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ email ne doit pas contenir plus de {{ limit }} caractères.
+    nom:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 1
+          max: 255
+          minMessage: Le champ nom doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ nom ne doit pas contenir plus de {{ limit }} caractères.
+    prenom:
+      - NotNull: ~
+      - NotBlanck: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 1
+          max: 2
+          minMessage: Le champ prenom doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ prenom ne doit pas contenir plus de {{ limit }} caractères.
+    date_naissance:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: \DateTimeInterface
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    adresse:
+      - NotnUll: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 3
+          max: 255
+          minMessage: Le champ adresse doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ adresse ne doit pas contenir plus de {{ limit }} caractères.
+    complement_adresse:
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          max: 255
+          maxMessage: Le champ complement_adresse ne doit pas contenir plus de {{ limit }} caractères.
+    ville:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 3
+          max: 255
+          minMessage: Le champ ville doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ ville ne doit pas contenir plus de {{ limit }} caractères.
+    code_postal:
+      - NotnUll: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length: 
+          min: 3
+          max: 255
+          minMessage: Le champ code postal doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ code postal ne doit pas contenir plus de {{ limit }} caractères.
+    date_enregistrement:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: \DateTimeInterface
+          message: "{{ value }} n'est pas un {{ type }} valide"
+
+
+App/Entity/Produit:
+  properties:
+    designation:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: 
+      - Length:
+          min: 3
+          max: 255
+          minMessage: Le champ designation doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ designation ne doit pas contenir plus de {{ limit }} caractères.
+    description:
+      - NotNul: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    prix:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: float
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    millesime:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type: 
+          type: integer
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    stock:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: integer
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    image:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type: 
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 3
+          max: 255
+    format:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 3
+          max: 255
+          minMessage: Le champ format doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ format ne doit pas contenir plus de {{ limit }} caractères.
+
+App/Entity/TypeProduit:
+  properties:
+    name:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 3
+          max: 255
+          minMessage: Le champ name doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ name doit contenir au moins {{ limit }} de caractères.
+
+App/Entity/Cepage:
+  properties:
+    name:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 3
+          max: 255
+          minMessage: Le champ name doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ name doit contenir au moins {{ limit }} de caractères.
+
+App/Entity/Faq:
+  properties:
+    questions:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    reponses:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+
+App/Entity/Commande:
+  properties:
+    numeros_commande:
+     - NotNull: ~
+     - NotBlank: ~
+     - Type:
+          type: integer
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    date_commande:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: \DateTimeInterface
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    montant:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: integer
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    paye:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: integer
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      
+
+
+
+
+          
+    

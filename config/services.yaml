@@ -14,6 +14,13 @@ parameters:
     HOME_PAGE: "home"
     LEGAL_PAGE: "mentions"
     COOKIE_PAGE: "cookie"
+    ABOUT_PAGE: 'about'
+    CGV_PAGE: 'cgv'
+    UTILISATION_PAGE: 'utilisation'
+    CHAMPAGNE_PAGE: "champagne"
+    CONNEXION_PAGE: "connexion"
+    PANIER_PAGE: "panier"
+    INSCRIPTION: "inscription"
 
 services:
     # default configuration for services in *this* file

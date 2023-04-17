@@ -9,17 +9,18 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-// use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class ChampagneController extends AbstractController
 {
+
     private $params;
     private $doctrine;
     private $security;
     private $db;
     private $session;
-    private $userInfo;
     private $app;
+    private $userInfo;
 
     public function __construct(ContainerBagInterface $params, ManagerRegistry $doctrine, Security $security, RequestStack $requestStack, Helpers $app){
 
@@ -32,11 +33,10 @@ class HomeController extends AbstractController
         $this->session = $requestStack->getSession();
     }
 
-    public function index(Helpers $app): Response
+    public function champagne(Helpers $app): Response
     {
-
-        return $this->render('home/index.html.twig', [
-            'bodyId' => $app->getBodyId('HOME_PAGE'),
+        return $this->render('home/champagne.html.twig', [
+            'bodyId' => $app->getBodyId('CHAMPAGNE_PAGE')
         ]);
     }
 }

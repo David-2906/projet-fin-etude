@@ -1,0 +1,13 @@
+.img-accueil {
+    width: 100vw;
+}
+
+.accueil {
+    color: #ffffff;
+    line-height: 2rem;
+}
+
+.accueil h2 {
+    text-align: center;
+    /* line-height: 50vw; */
+}
