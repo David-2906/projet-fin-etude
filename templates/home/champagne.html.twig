@@ -1,20 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ChampagneController!{% endblock %}
+{% block title %}Nos champagnes{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1 class="titleChamp">Nos Champagnes</h1>
 
-<div class="example-wrapper">
-    <h1>Hello Champagne! ✅</h1>
+    <section class="productChamp">
+{% for champagne in champagnes %}
+    <article class="articleChamp">
+        <h2>{{champagne.designation}}</h2>
+        <img class="productImage" src="{{champagne.image}}" alt="">
+        <p>{{champagne.prix}} €</p>
+        <p>{{champagne.millesime}}</p>
+        <button><a href="{{ path('app_detail_champagne', {champagne: champagne.id})}}">Détails</a></button>
+    {% if userInfo.isAdmin %}
+        <button><a href="{{ path('app_modifier_champagne', {champagne: champagne.id})}}">Modifier</a></button>
+        <button><a href="{{ path('app_supprimer_champagne', {champagne: champagne.id})}}?token={{ csrf_token('supprimer') }}">Supprimer</a></button>
+    {% endif %}
+    </article>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/formation/Desktop/projet-fin-etude/src/Controller/ChampagneController.php'|file_link(0) }}">src/Controller/ChampagneController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/formation/Desktop/projet-fin-etude/templates/champagne/index.html.twig'|file_link(0) }}">templates/champagne/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% endfor %}
+</section>
+
+
 {% endblock %}

@@ -5,6 +5,7 @@
     color: goldenrod;
     margin-right: 1.5rem;
 
+
 }
 
 .left-footer-menu li {
@@ -38,7 +39,7 @@ i {
 }
 
 a, a:visited {
-    color:#ffffff;
+    color:goldenrod;
     text-decoration: none;
 }
 

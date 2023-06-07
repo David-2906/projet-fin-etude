@@ -13,7 +13,27 @@ app_home:
     path: /
     controller: App\Controller\HomeController::index
     methods: GET|POST
+# front-office
 
+app_membre:
+    path: /membre
+    controller: App\Controller\MembreController::dashboard
+    methods: GET
+
+app_details_membre:
+    path: /membre/mon-compte/details-mon-compte
+    controller: App\Controller\MembreController::detailsCompte
+    methods: GET
+
+app_modifier_mon_compte:
+    path: /membre/mon-compte/modifier-mon-compte
+    controller: App\Controller\MembreController::modifierCompte
+    methods: GET|POST
+
+app_supprimer_compte:
+    path: /membre/mon-compte/supprimer-mon-compte/{id}
+    controller: App\Controller\MembreController::supprimerCompte
+    methods: GET
 # Pages statiques
 
 app_legal:
@@ -50,24 +70,108 @@ app_champagne:
     controller: App\Controller\ChampagneController::champagne
     methods: GET
 
-
-app_connexion:
-    path: /connexion
-    controller: App\Controller\ConnexionController::connexion
+app_detail_champagne:
+    path: /champagnes/detail/{champagne}
+    controller: App\Controller\ChampagneController::detailsChampagne
     methods: GET|POST
 
+app_modifier_champagne:
+    path: /champagnes/modifier/{champagne}
+    controller: App\Controller\ChampagneController::modifierChampagne
+    methods: GET|POST
+
+app_supprimer_champagne:
+    path: /champagnes/supprimer/{champagne}
+    controller: App\Controller\ChampagneController::supprimerChampagne
+    methods: GET|POST
 
 app_panier:
-    path: /monpanier
-    controller: App\Controller\PanierController::index
+    path: /panier
+    controller: App\Controller\PanierController::panier
     methods: GET|POST
 
-app_inscription:
-    path: /inscription
-    controller: App\Controller\InscriptionController::inscription
-    methods: GET|POST
 
 app_commande:
     path: /commande
     controller: App\Controller\CommandeController::commande
     methods: GET|POST
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+    methods: [GET,POST]
+
+app_logout:
+    path: /logout
+    methods: GET
+
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+    methods: GET|POST
+
+app_verify_email:
+    path: /verify/email
+    controller: App\Controller\RegistrationController::verifyUserEmail
+
+# app_email_conf_sent:
+#     path: /signup/confirmation
+#     controller: App\Controller\RegistrationController::postSignUp
+
+
+# Routes Back Office Admin
+
+app_admin:
+    path: /admin
+    controller: App\Controller\AdminController::dashboard
+    methods: GET|POST
+
+app_admin_cepage:
+    path: /admin/cepage
+    controller: App\Controller\AdminController::addCepage
+    methods: GET|POST
+
+app_admin_typeProduit:
+    path: /admin/typeProduit
+    controller: App\Controller\AdminController::addType
+    methods: GET|POST
+
+app_membre_management:
+    path: /admin/membre-management
+    controller: App\Controller\AdminController::membreManagement
+    methods: GET|POST
+
+app_modifier_membre:
+    path: /admin/membre-modifier/{member}
+    controller: App\Controller\AdminController::modifierMembre
+    methods: GET|POST
+
+app_supprimer_membre:
+    path: /admin/supprimer-membre/{member}
+    controller: App\Controller\AdminController::supprimerMembre
+    methods: GET|POST
+
+
+
+
+# Stripe
+
+app_stripe:
+  path: /stripe
+  controller: App\Controller\StripeController::index
+
+
+app_stripe_charge:
+  path: /stripe/create-charge
+  controller: App\Controller\StripeController::createCharge
+  methods: POST
+
+
+app_stripe_success:
+  path: /order/confirmation
+  controller: App\Controller\StripeController::orderConfirmation
+
+
+app_stripe_fail:
+  path: /payment/failure
+  controller: App\Controller\StripeController::paymentFailure

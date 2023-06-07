@@ -7,31 +7,46 @@ twig:
     # form theme ; permet de donner un style par default aux formulaires pour ne pas lire du HTML pure
 
 
-# globals
-    HOME_PAGE: "home"
-    LEGAL_PAGE: "mentions"
-    COOKIE_PAGE: "cookie"
-    ABOUT_PAGE: 'about'
-    CGV_PAGE: 'cgv'
-    UTILISATION_PAGE: 'utilisation'
-    CHAMPAGNE_PAGE: "champagne"
-    CONNEXION_PAGE: "connexion"
-    PANIER_PAGE: "panier"
-    INSCRIPTION: "inscription"
-    COMMANDE_PAGE: "commande"
-    # ORDER_CONFIRMATION: "orderConfirmation"
+    globals:
+        HOME_PAGE: "home"
+        LEGAL_PAGE: "mentions"
+        COOKIE_PAGE: "cookie"
+        ABOUT_PAGE: 'about'
+        CGV_PAGE: 'cgv'
+        UTILISATION_PAGE: 'utilisation'
+        CHAMPAGNE_PAGE: "champagne"
+        CONNEXION_PAGE: "connexion"
+        PANIER_PAGE: "panier"
+        INSCRIPTION: "inscription"
+        COMMANDE_PAGE: "commande"
+        REGISTRATION: "register"
+        ADMIN_DASHBOARD: "admin"
+        MEMBER_DASHBOARD: "membre"
+        ORDER_CONFIRMATION: "orderConfirmation"
+    # HOME_PAGE: "home"
+    # LEGAL_PAGE: "mentions"
+    # COOKIE_PAGE: "cookie"
+    # ABOUT_PAGE: 'about'
+    # CGV_PAGE: 'cgv'
+    # UTILISATION_PAGE: 'utilisation'
+    # CHAMPAGNE_PAGE: "champagne"
+    # CONNEXION_PAGE: "connexion"
+    # PANIER_PAGE: "panier"
+    # INSCRIPTION: "inscription"
+    # COMMANDE_PAGE: "commande"
+    
 
 
-    MEMBER_PROFILE: "profile"
-    MEMBER_ORDER_HISTORY: "member-order-history"
+    # MEMBER_PROFILE: "profile"
+    # MEMBER_ORDER_HISTORY: "member-order-history"
 
-    ADMIN_DASHBOARD: "dasboard"
-    ADMIN_MEMBERS_MANAGEMENT: "members-management"
-    ADMIN_PRODUCTS_MANAGEMENT: "products-management"
-    ADMIN_ORDERS_MANAGEMENT: "orders-management"
-    ADMIN_CATEGORY_MANAGEMENT: "category-management"
+    # ADMIN_DASHBOARD: "admin"
+    # ADMIN_MEMBERS_MANAGEMENT: "members-management"
+    # ADMIN_PRODUCTS_MANAGEMENT: "products-management"
+    # ADMIN_ORDERS_MANAGEMENT: "orders-management"
+    # ADMIN_CATEGORY_MANAGEMENT: "category-management"
 
-    PAGE_404: "page-404"
+    # PAGE_404: "page-404"
 
 when@test:
     twig:

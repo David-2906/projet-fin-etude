@@ -19,7 +19,7 @@ class PanierController extends AbstractController
     private $db;
     private $session;
     private $app;
-    private $userInfo;
+    private $user;
 
     public function __construct(ContainerBagInterface $params, ManagerRegistry $doctrine, Security $security, RequestStack $requestStack, Helpers $app){
 
@@ -27,7 +27,7 @@ class PanierController extends AbstractController
         $this->doctrine = $doctrine;
         $this->db = $doctrine->getManager();
         $this->security = $security;
-        $this->userInfo = $app->getUser();
+        $this->user = $app->getUser();
 
         $this->session = $requestStack->getSession();
     }
@@ -36,7 +36,8 @@ class PanierController extends AbstractController
     public function panier(Helpers $app): Response
     {
         return $this->render('home/panier.html.twig', [
-            'bodyId' => $app->getBodyId('PANIER_PAGE')
+            'bodyId' => $app->getBodyId('PANIER_PAGE'),
+            'userInfo' => $this->user,
         ]);
     }
 }

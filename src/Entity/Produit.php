@@ -40,9 +40,21 @@ class Produit
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: PanierProduit::class, orphanRemoval: true)]
     private Collection $panierProduits;
 
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?TypeProduit $typeProduit = null;
+
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Cepage $cepage = null;
+
+    #[ORM\ManyToMany(targetEntity: Commande::class, inversedBy: 'produits')]
+    private Collection $commande;
+
     public function __construct()
     {
         $this->panierProduits = new ArrayCollection();
+        $this->commande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,6 +172,54 @@ class Produit
                 $panierProduit->setProduit(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTypeProduit(): ?TypeProduit
+    {
+        return $this->typeProduit;
+    }
+
+    public function setTypeProduit(?TypeProduit $typeProduit): self
+    {
+        $this->typeProduit = $typeProduit;
+
+        return $this;
+    }
+
+    public function getCepage(): ?Cepage
+    {
+        return $this->cepage;
+    }
+
+    public function setCepage(?Cepage $cepage): self
+    {
+        $this->cepage = $cepage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommande(): Collection
+    {
+        return $this->commande;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commande->contains($commande)) {
+            $this->commande->add($commande);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        $this->commande->removeElement($commande);
 
         return $this;
     }

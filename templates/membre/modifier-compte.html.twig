@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification de mes informations {% endblock %}
+
+{% block body %}
+
+<h1>Modifier mon profil</h1>
+	<div class="container text-light">
+		<div class="row">
+				{{ form_start(modifierForm) }}
+				{{ form_row(modifierForm.email) }}
+                {{ form_row(modifierForm.nom) }}
+                {{ form_row(modifierForm.prenom) }}
+                {{ form_row(modifierForm.dateNaissance) }}
+                {{ form_row(modifierForm.adresse) }}
+                {{ form_row(modifierForm.complement_adresse) }}
+                {{ form_row(modifierForm.ville) }}
+                {{ form_row(modifierForm.code_postal) }}
+
+				<button type="submit" class="btn">Valider</button>
+				{{ form_end(modifierForm) }}
+		</div>
+	</div>
+
+{% endblock %}

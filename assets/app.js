@@ -9,9 +9,15 @@
 import './styles/global.css';
 import './styles/footer.css';
 import './styles/home.css';
+import './styles/age-verify.css';
+import './styles/champagne.css';
+import './styles/monCompte.css';
+
 
 import './js/my-js.js';
 
 // start the Stimulus application
 import './bootstrap';
+
+
 

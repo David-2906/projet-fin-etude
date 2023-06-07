@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin |Cepage Management {% endblock %}
+
+{% block body %}
+
+<p>Page backOffice gestion des cepage acces restreint ROLE_SUPER_ADMIN</p>
+	<div class="container text-light">
+		<div class="row">
+				{{ form_start(CepageForm) }}
+				{{ form_row(CepageForm.name) }}
+
+				<button type="submit" class="btn">Valider</button>
+				{{ form_end(CepageForm) }}
+		</div>
+	</div>
+
+{% endblock %}

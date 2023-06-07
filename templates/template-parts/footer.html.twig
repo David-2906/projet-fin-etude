@@ -1,17 +1,17 @@
         <section class="footer">
             <nav class="left-footer-menu">
                 <ul>
-                    <li>Mentions legales</li>
-                    <li>Conditions générales de ventes</li>
-                    <li>Conditions d'utilisation</li>
-                    <li>FAQ</li>
-                    <li>Vie privée et cookies</li>
+                    <li><a href="{{ path('app_legal') }}">Mentions legales</a></li>
+                    <li><a href="{{ path('app_cgv')}}">Conditions générales de ventes</a></li>
+                    <li><a href="{{ path('app_utilisation')}}">Conditions d'utilisation</a></li>
+                    <li><a href="{{ path('app_utilisation')}}">FAQ</a></li>
+                    <li><a href="{{ path('app_cookies')}}">Vie privée et cookies</a></li>
                 </ul>
             </nav>
 
             <nav class="right-footer-menu">
                 <ul>
-                    <li>Qui sommes-nous</li>
+                    <li><a href="{{ path('app_about')}}">Qui sommes-nous</a></li>
                     <li>Suivez nous :</li>
                     <li><a href="https://fr-fr.facebook.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
                         <a href="https://www.instagram.com/?hl=fr" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>

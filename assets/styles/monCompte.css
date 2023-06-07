@@ -1,0 +1,16 @@
+#profilUser {
+    display: grid !important;
+    grid-template-columns: 2fr !important;
+    /* grid-template-rows: 30% repeat(2, 10rem); */
+    column-gap: 2rem !important;
+    /* row-gap: 4rem; */
+    line-height: 3rem;
+}
+
+.afficheUser {
+    border: 1px solid #ffffff;
+}
+
+.afficheCommande {
+    border: 1px solid #ffffff;
+}

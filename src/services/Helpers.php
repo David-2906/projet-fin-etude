@@ -41,9 +41,15 @@ class Helpers{
     } else {
       $isAdmin = false;
     }
+    if ($this->security->isGranted('ROLE_SUPER_ADMIN')) {
+      $isSuperAdmin = true;
+    } else {
+      $isSuperAdmin = false;
+    }
     $userObj = new stdClass();
     $userObj->user = $user;
     $userObj->isAdmin = $isAdmin;
+    $userObj->isSuperAdmin = $isSuperAdmin;
     $userObj->isLoggedIn = $isLoggedIn;
     return $userObj;
   }

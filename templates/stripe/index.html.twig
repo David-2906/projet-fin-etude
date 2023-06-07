@@ -1,0 +1,117 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Paiement Stripe
+
+{% endblock %}
+
+
+{% block body %}
+
+  <div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              {% for message in app.flashes('success') %}
+
+                <div style="color: green;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        border: 2px green solid;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        text-align: center;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding: 5px;margin-bottom: 10px;">
+
+                  {{ message }}
+
+                </div>
+
+              {% endfor %}
+
+
+              <form id='checkout-form' method='post' action="{{ path('app_stripe_charge') }}">
+                <input type='hidden' name='stripeToken' id='stripe-token-id'>
+                <label for="card-element" class="mb-5">Checkout Forms</label>
+                <br>
+                <div id="card-element" class="form-control"></div>
+                <button id='pay-btn' class="btn btn-success mt-3" type="button" style="margin-top: 20px; width: 100%;padding: 7px;" onclick="createToken()">Payer
+
+                  {{ orderTotal }}€
+
+                </button>
+
+                <form></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <script src="https://js.stripe.com/v3/"></script>
+
+        <script>
+
+          const stripe = Stripe("{{ clef_stripe }}");
+
+
+const options = {
+
+mode: 'payment',
+
+currency: 'eur',
+
+amount: {{ orderTotal * 100 }}
+
+};
+
+// const elements = stripe.elements(options);
+
+// var cardElement = elements.create('payment');
+
+const elements = stripe.elements();
+
+var cardElement = elements.create('card');
+
+cardElement.mount('#card-element');
+
+
+function createToken() {
+
+document.getElementById("pay-btn").disabled = true;
+
+
+stripe.createToken(cardElement).then(function (result) {
+
+
+if (typeof result.error != 'undefined') {
+
+document.getElementById("pay-btn").disabled = false;
+
+alert(result.error.message);
+
+}
+
+
+// creating token success
+
+if (typeof result.token != 'undefined') {
+
+document.getElementById("stripe-token-id").value = result.token.id;
+
+document.getElementById('checkout-form').submit();
+
+}
+
+});
+
+
+}
+
+        </script>
+
+      </div>
+
+    {% endblock %}

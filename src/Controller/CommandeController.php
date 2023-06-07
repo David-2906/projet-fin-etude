@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\services\Helpers;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,10 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class CommandeController extends AbstractController
 {
    
-    public function commande(): Response
+    public function commande(Helpers $app): Response
     {
         return $this->render('commande/index.html.twig', [
-            'controller_name' => 'CommandeController',
+            'bodyId'=>$app->getBodyId('COMMANDE_PAGE'),
         ]);
     }
 }

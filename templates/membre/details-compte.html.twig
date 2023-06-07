@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes infomations personnelles{% endblock %}
+
+{% block body %}
+
+<p>{{app.user.prenom}}</p>
+<p>{{app.user.nom}}</p>
+<p>{{app.user.email}}</p>
+<p>{{app.user.ville}}</p>
+<p>{{app.user.codePostal}}</p>
+
+<button><a href='{{ path('app_membre')}}'>Retour</a></button>
+<button><a href="{{ path('app_modifier_mon_compte')}}">Modifier mes informations</a></button>
+<button><a href="{{ path('app_supprimer_compte', {'id': app.user.id})}}">Supprimer mon compte</a></button>
+
+{% endblock %}

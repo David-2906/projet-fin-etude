@@ -52,7 +52,10 @@ table {
 
 body {
     background-color: #000000;
+
 }
+
+
 
 .logoNav {
     width: 7rem;
@@ -72,3 +75,4 @@ body {
 .colorButton {
 	background-color: goldenrod !important;
 }
+

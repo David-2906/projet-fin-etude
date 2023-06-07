@@ -1,0 +1,35 @@
+.productChamp {
+    display: grid ;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    row-gap: 2rem;
+    margin: 1rem;
+}
+
+.articleChamp {
+    background-color: blanchedalmond;
+    padding: 2em;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.productImage {
+    width: 15rem;
+}
+
+.titleChamp {
+    text-align: center;
+    color: #ffffff;
+} 
+
+@media screen and (min-width: 900px) {
+    .productChamp {
+        grid-template-columns: repeat(3, 1fr); /* on passe à 3 colonnes pour les écrans de 900px et plus */
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .productChamp {
+        grid-template-columns: repeat(4, 1fr); /* on passe à 4 colonnes pour les écrans de 1300px et plus */
+    }
+}

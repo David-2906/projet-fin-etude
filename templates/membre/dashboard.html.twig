@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion de compte{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center text-white">Bonjour {{ app.user.prenom }} {{ app.user.nom }}! ✅</h1>
+
+     
+    <h2 class="text-white">Mon compte </h2> 
+
+    <section id="profilUser" class="text-white">
+        <div class="afficheUser">
+            <p>Mes infos</p>
+            <button><a href='{{ path('app_details_membre')}}'>Afficher mes infos</a></button>
+        </div>
+
+        <div class="afficheCommande">
+            <p>Mon historique de commande</p>
+            <button>Afficher</button>
+        </div>
+    </section>
+     
+
+{% endblock %}

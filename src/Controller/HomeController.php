@@ -18,7 +18,7 @@ class HomeController extends AbstractController
     private $security;
     private $db;
     private $session;
-    private $userInfo;
+    private $user;
     private $app;
 
     public function __construct(ContainerBagInterface $params, ManagerRegistry $doctrine, Security $security, RequestStack $requestStack, Helpers $app){
@@ -27,7 +27,7 @@ class HomeController extends AbstractController
         $this->doctrine = $doctrine;
         $this->db = $doctrine->getManager();
         $this->security = $security;
-        $this->userInfo = $app->getUser();
+        $this->user = $app->getUser();
 
         $this->session = $requestStack->getSession();
     }
@@ -37,6 +37,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'bodyId' => $app->getBodyId('HOME_PAGE'),
+            'userInfo' => $this->user,
         ]);
     }
 }

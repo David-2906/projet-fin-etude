@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Confirmation
+
+{% endblock %}
+
+
+{% block body %}
+
+  <div>
+
+    <div class="mt-5 p-5 border border-primary d-flex flex-column justify-content-center align-items-center text-light">
+
+      <h3>Votre commande n'a pas pu aboutir</h3>
+
+      <h5>Votre carte n'a pas été debitée.</h5>
+
+      <h5>montant de votre commande:
+
+        {{ orderTotal }}€</h5>
+
+      <a class="btn btn-outline-primary mt-3" href="{{ path('app_stripe') }}">Retour à la page de paiement</a>
+
+    </div>
+
+  </div>
+
+{% endblock %}

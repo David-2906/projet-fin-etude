@@ -10,11 +10,11 @@ class PanierProduit
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(type:"integer")]
+    private $id = null;
 
-    #[ORM\Column]
-    private ?int $quantity = null;
+    #[ORM\Column(type:"integer", nullable: false)]
+    private $quantity = null;
 
     #[ORM\ManyToOne(inversedBy: 'panierProduits')]
     #[ORM\JoinColumn(nullable: false)]

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{champagne.designation}}{% endblock %}
+
+{% block body %}
+<section class="productChamp">
+    <article class="articleChamp">
+    <h2>{{champagne.designation}}</h2>
+    <img class="productImage" src="{{champagne.image}}" alt="">
+    <p>{{champagne.prix}} €</p>
+    <p>{{champagne.millesime}}</p>
+    <p>{{champagne.format}}</p>
+    <button><a href="{{ path('app_champagne')}}">Retour</a></button>
+    <button>Ajouter au panier</button>
+    </article>
+</section>
+
+
+
+{% endblock %}

@@ -214,6 +214,30 @@ App/Entity/Commande:
       - Type:
           type: integer
           message: "{{ value }} n'est pas un {{ type }} valide"
+
+App/Entity/PanierProduit:
+  properties:
+    quantity:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: integer
+          message: "{{ value }} n'est pas un {{ type }} valide"
+
+App/Entity/Panier:
+  properties:
+    createdAt:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: \DateTimeInterface
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    updatedAt:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: \DateTimeInterface
+          message: "{{ value }} n'est pas un {{ type }} valide"
       
 
 
