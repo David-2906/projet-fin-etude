@@ -30,7 +30,7 @@ App/Entity/User:
           message: "{{ value }} n'est pas un {{ type }} valide"
       - Length:
           min: 1
-          max: 2
+          max: 255
           minMessage: Le champ prenom doit contenir au moins {{ limit }} de caractères.
           maxMessage: Le champ prenom ne doit pas contenir plus de {{ limit }} caractères.
     date_naissance:
@@ -101,7 +101,7 @@ App/Entity/Produit:
           minMessage: Le champ designation doit contenir au moins {{ limit }} de caractères.
           maxMessage: Le champ designation ne doit pas contenir plus de {{ limit }} caractères.
     description:
-      - NotNul: ~
+      - NotNull: ~
       - NotBlank: ~
       - Type:
           type: string
@@ -238,6 +238,62 @@ App/Entity/Panier:
       - Type:
           type: \DateTimeInterface
           message: "{{ value }} n'est pas un {{ type }} valide"
+
+App/Entity/Contact:
+  properties:
+    nom:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 1
+          max: 255
+          minMessage: Le champ nom doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ nom ne doit pas contenir plus de {{ limit }} caractères.
+    prenom:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 1
+          max: 255
+          minMessage: Le champ prenom doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ prenom ne doit pas contenir plus de {{ limit }} caractères.
+    email:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          min: 3
+          max: 255
+          minMessage: Le champ email doit contenir au moins {{ limit }} de caractères.
+          maxMessage: Le champ email ne doit pas contenir plus de {{ limit }} caractères.
+    sujet:
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+      - Length:
+          max: 100
+          maxMessage: Le champ sujet ne doit pas contenir plus de {{ limit }} caractères.
+    message:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: string
+          message: "{{ value }} n'est pas un {{ type }} valide"
+    createdAt:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type:
+          type: \DateTimeImmutable
+          message: "{{ value }} n'est pas un {{ type }} valide"
+
       
 
 

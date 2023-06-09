@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Demande de {{ contact.prenom }} {{ contact.nom}}</h1>
+    <p>Email: {{contact.email}}</p>
+    <p>Sujet: {{contact.sujet}}</p>
+     <p>Message:</p>
+    <div>
+     {{contact.message|raw}}
+    </div>
+   
+</body>
+</html>
+

@@ -151,6 +151,11 @@ app_supprimer_membre:
     controller: App\Controller\AdminController::supprimerMembre
     methods: GET|POST
 
+app_contact:
+    path: /contact
+    controller: App\Controller\ContactController::contact
+    methods: GET|POST
+
 
 
 

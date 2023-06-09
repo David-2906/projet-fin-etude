@@ -27,6 +27,7 @@ parameters:
     DETAILS_MEMBRE: "detailsMembre"
     ORDER_CONFIRMATION: "orderConfirmation"
     RESET_PASSWORD: "resetPassword"
+    CONTACT: "contact"
 
 
     # MEMBER_PROFILE: "profile"
