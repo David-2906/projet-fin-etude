@@ -15,6 +15,8 @@ import './styles/monCompte.css';
 
 
 import './js/my-js.js';
+// import './js/panier.js';
+// import './js/app.js';
 
 // start the Stimulus application
 import './bootstrap';

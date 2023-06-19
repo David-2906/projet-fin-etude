@@ -86,9 +86,14 @@ app_supprimer_champagne:
     methods: GET|POST
 
 app_panier:
+    path: /panier/details
+    controller: App\Controller\PanierController::cartDetails
+    methods: GET|POST
+
+app_ajouter_au_panier:
     path: /panier
     controller: App\Controller\PanierController::panier
-    methods: GET|POST
+    methods: POST
 
 
 app_commande:

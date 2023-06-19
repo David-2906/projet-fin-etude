@@ -7,7 +7,7 @@
 		<button class="navbar-toggler colorButton" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<section class="d-flex" id="navA">
+		<section class="d-flex">
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
@@ -16,9 +16,22 @@
 					<li class="nav-item">
 						<a class="nav-link liNav" href="{{ path('app_champagne') }}">Nos Champagnes</a>
 					</li>
+					{# <li class="nav-item">
+						<a class="nav-link liNav" href="{{ path('app_champagne') }}">{{ userInfo.isLoggedIn ? "Mon Panier" : "" }}</a>
+					</li> #}
+					<li class="nav-item">
+					<a class="nav-link liNav" href="{% if userInfo.user is null %}javascript:void(0){% else %} {{ path('app_panier') }} {% endif %}">
+						Mon Panier
+						{% if not userInfo.user is null %}
+							<span class=" top-15 start-50 translate-middle badge rounded-pill bg-warning">
+								{{ cartCount }}
+							</span>
+						{% endif %}
+					</a>
+				</li>
         			<li class="nav-item dropdown">
           				<a class="nav-link dropdown-toggle liNav" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            				{{ userInfo.isLoggedIn ? "Déconnexion" : "Connexion" }}
+            				{{ userInfo.isLoggedIn ? "Déconnexion" : "Inscription/Connexion" }}
           				</a>
 					
           		<ul class="dropdown-menu liNav bg-dark">
@@ -68,10 +81,7 @@
 					</li> 
 				{% endif %}           		
 				</ul>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link liNav" href="{{ path('app_panier') }}">Mon Panier</a>
-					</li>
+
 			</div>
 		</section>
 	</div>

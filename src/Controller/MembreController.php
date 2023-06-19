@@ -18,6 +18,7 @@ class MembreController extends AbstractController
 {
     private string $bodyId;
     private $user;
+    private $cartCount;
 
     public function __construct(Helpers $app)
     {
@@ -33,6 +34,7 @@ class MembreController extends AbstractController
             // 'controller_name' => 'MembreController',
             'bodyId' => $app->getBodyId('MEMBER_DASHBOARD'),
             'userInfo' => $this->user,
+            'cartCount' => $this->cartCount,
         ]);
     }
 
@@ -41,6 +43,7 @@ class MembreController extends AbstractController
         return $this->render('membre/details-compte.html.twig',[
             'bodyId'=>$app->getBodyId('DETAILS_MEMBRE'),
             'userInfo' => $this->user,
+            'cartCount' => $this->cartCount,
         ]);
     }
 
@@ -61,6 +64,7 @@ class MembreController extends AbstractController
             'modifierForm' => $form->createView(),
             'bodyId' => $app->getBodyId('REGISTRATION'),
             'userInfo' => $this->user,
+            'cartCount' => $this->cartCount,
         ]);
 
     }

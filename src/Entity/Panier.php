@@ -22,7 +22,7 @@ class Panier
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: false)]
     private \DateTimeInterface $updatedAt;
 
-    #[ORM\OneToOne(inversedBy: 'panier', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: User::class, inversedBy: 'panier', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id')]
     private ?User $user;
 
@@ -79,10 +79,12 @@ class Panier
     /**
      * @return Collection<int, PanierProduit>
      */
-    public function getArticle(): Collection
-    {
-        return $this->article;
-    }
+     public function getArticle(): Collection
+     {
+         return $this->article;
+     }
+
+
 
     public function getCountArticle(): int
     {

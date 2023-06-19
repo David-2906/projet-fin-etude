@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\services\Helpers;
+use App\services\PanierManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -26,17 +27,27 @@ class ChampagneController extends AbstractController
     private $db;
     private $session;
     private $app;
-    private $user;
+    private $userInfo;
+    private $cartCount;
+    private $cartManager;
 
-    public function __construct(ContainerBagInterface $params, ManagerRegistry $doctrine, Security $security, RequestStack $requestStack, Helpers $app){
+    public function __construct(ContainerBagInterface $params, ManagerRegistry $doctrine, Security $security, RequestStack $requestStack, Helpers $app, PanierManager $cartManager){
 
         $this->params = $params;
         $this->doctrine = $doctrine;
         $this->db = $doctrine->getManager();
         $this->security = $security;
-        $this->user = $app->getUser();
+        $this->userInfo = $app->getUser();
 
         $this->session = $requestStack->getSession();
+        if (null !== $this->userInfo->user) {
+            if(null !== $this->session->get('cartCount')) {
+                $this->cartCount = (int)$this->session->get('cartCount');
+            } else {
+                $this->session->set('cartCount', $cartManager->getCartCount($this->userInfo->user));
+                $this->cartCount = (int)$this->session->get('cartCount');
+            }
+        }
     }
 
     public function champagne(Helpers $app): Response
@@ -45,16 +56,18 @@ class ChampagneController extends AbstractController
 
         return $this->render('home/champagne.html.twig', [
             'bodyId' => $app->getBodyId('CHAMPAGNE_PAGE'),
-            'userInfo' => $this->user,
+            'userInfo' => $this->userInfo,
             'champagnes' => $champagnes,
+            'cartCount' => $this->cartCount,
         ]);
     }
 
     public function detailsChampagne(Produit $champagne, Helpers $app): Response {
         return $this->render('home/detail-champagne.html.twig', [
             'bodyId' => $app->getBodyId('DETAIL_CHAMPAGNE_PAGE'),
-            'userInfo' => $this->user,
+            'userInfo' => $this->userInfo,
             'champagne' => $champagne,
+            'cartCount' => $this->cartCount,
         ]);
     }
 
@@ -73,7 +86,8 @@ class ChampagneController extends AbstractController
         return $this->render('admin/dashboard.html.twig',[
             'ProduitForm' => $form->createView(),
             'bodyId'=> $app->getBodyId('ADMIN_DASHBOARD'),
-            'userInfo' => $this->user,
+            'userInfo' => $this->userInfo,
+            'cartCount' => $this->cartCount,
         ]);
     }
 

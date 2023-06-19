@@ -13,12 +13,12 @@ class PanierProduit
     #[ORM\Column(type:"integer")]
     private $id = null;
 
-    #[ORM\Column(type:"integer", nullable: false)]
+    #[ORM\Column(type:"integer")]
     private $quantity = null;
 
-    #[ORM\ManyToOne(inversedBy: 'panierProduits')]
+    #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'panierProduits')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Produit $produit = null;
+    private Produit $produit;
 
     #[ORM\ManyToOne(targetEntity: Panier::class, inversedBy: 'article')]
     #[ORM\JoinColumn(nullable: false)]
