@@ -12,11 +12,13 @@ import './styles/home.css';
 import './styles/age-verify.css';
 import './styles/champagne.css';
 import './styles/monCompte.css';
+import './styles/panier.css';
+import './styles/carousel.css'
 
 
 import './js/my-js.js';
-// import './js/panier.js';
-// import './js/app.js';
+import './js/carousel.js';
+
 
 // start the Stimulus application
 import './bootstrap';

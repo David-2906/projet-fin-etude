@@ -41,6 +41,10 @@ app_legal:
     controller: App\Controller\StaticController::mentionsLegales
     methods: GET
 
+app_faq:
+    path: /faq
+    controller: App\Controller\StaticController::faq
+    methods: GET|POST
 
 app_cookies:
     path: /confidentialite
@@ -85,6 +89,31 @@ app_supprimer_champagne:
     controller: App\Controller\ChampagneController::supprimerChampagne
     methods: GET|POST
 
+app_mon_panier:
+    path: /mon-panier
+    controller: App\Controller\CartController::panier
+    methods: GET|Post
+
+app_ajout_panier:
+    path: /ajouter/mon-panier/{id}
+    controller: App\Controller\CartController::add
+    methods: GET|POST
+
+app_supprimer_article_panier:
+    path: /supprimer/mon-panier/{id}
+    controller: App\Controller\CartController::decrease
+    methods: GET|POST
+
+app_supprimer_ligne_panier:
+    path: /supprimer/ligne-panier/{id}
+    controller: App\Controller\CartController::deleteCartById
+    methods: GET|POST
+
+app_supprimer_panier:
+    path: /supprimer/mon-panier
+    controller: App\Controller\CartController::delete
+    methods: GET|POST
+
 app_panier:
     path: /panier/details
     controller: App\Controller\PanierController::cartDetails
@@ -99,6 +128,11 @@ app_ajouter_au_panier:
 app_commande:
     path: /commande
     controller: App\Controller\CommandeController::commande
+    methods: GET|POST
+
+app_preparation_commande:
+    path: /commande/preparation
+    controller: App\Controller\CommandeController::preparationCommande
     methods: GET|POST
 
 app_login:
@@ -141,6 +175,11 @@ app_admin_typeProduit:
     controller: App\Controller\AdminController::addType
     methods: GET|POST
 
+app_admin_transporter:
+    path: /admin/transporter
+    controller: App\Controller\AdminController::addTransporter
+    methods: GET|POST
+
 app_membre_management:
     path: /admin/membre-management
     controller: App\Controller\AdminController::membreManagement
@@ -167,8 +206,9 @@ app_contact:
 # Stripe
 
 app_stripe:
-  path: /stripe
+  path: /stripe/{reference}
   controller: App\Controller\StripeController::index
+  methods: GET|POST
 
 
 app_stripe_charge:
@@ -178,10 +218,12 @@ app_stripe_charge:
 
 
 app_stripe_success:
-  path: /order/confirmation
-  controller: App\Controller\StripeController::orderConfirmation
+  path: /order/confirmation/{reference}
+  controller: App\Controller\StripeController::stripeSuccess
+  methods: GET|POST
 
 
 app_stripe_fail:
-  path: /payment/failure
-  controller: App\Controller\StripeController::paymentFailure
+  path: /payment/failure/{reference}
+  controller: App\Controller\StripeController::stripeError
+  methods: GET|POST

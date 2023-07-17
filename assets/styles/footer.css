@@ -5,8 +5,8 @@
     color: goldenrod;
     margin-right: 1.5rem;
 
-
 }
+
 
 .left-footer-menu li {
     font-size: 1rem;
@@ -26,20 +26,25 @@
 
 .footer-footer {
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .paragraph {
     text-align: center;
-    color:goldenrod;
+    color: goldenrod;
 }
 
 i {
-    color:#ffffff;
+    color: goldenrod;
     padding: 0.5em;
 }
 
+.imageFooter {
+    max-width: 100%;
+}
+
 a, a:visited {
-    color:goldenrod;
+    color: goldenrod;
     text-decoration: none;
 }
 

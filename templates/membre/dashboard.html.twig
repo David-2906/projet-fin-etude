@@ -4,12 +4,12 @@
 
 {% block body %}
 
-    <h1 class="text-center text-white">Bonjour {{ app.user.prenom }} {{ app.user.nom }}! ✅</h1>
+    <h1 class="text-center text-dark">Bonjour {{ app.user.prenom }} {{ app.user.nom }}! ✅</h1>
 
      
-    <h2 class="text-white">Mon compte </h2> 
+    <h2 class="text-dark">Mon compte </h2> 
 
-    <section id="profilUser" class="text-white">
+    <section id="profilUser" class="text-dark">
         <div class="afficheUser">
             <p>Mes infos</p>
             <button><a href='{{ path('app_details_membre')}}'>Afficher mes infos</a></button>

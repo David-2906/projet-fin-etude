@@ -3,26 +3,56 @@
 {% block title %}Admin | Membre Management {% endblock %}
 
 {% block body %}
-<h1 class="text-white text-center">Utilisateurs inscrits</h1>
-
+<h1 class="text-dark text-center">Utilisateurs inscrits</h1>
+<section class="container my-3 d-flex justify-content-between">
 {% for member in members %}
-<section class="container my-3 bg-white">
-    <div class="row">
-    <div class="col">
-        <p>Identifiant: {{member.email}}</p>
-        <p>Nom: {{member.nom}}</p>
-        <p>Prenom: {{member.prenom}}</p>
-        <p>Date de naissance: {{member.dateNaissance|date('d-m-Y')}}</p>
-        <p>Mon adresse: {{member.adresse}}</p>
-        <p>Ville: {{member.ville}}</p>
-        <p>Code Postal: {{member.codePostal}}</p>
-        <p>Date d'inscritption: {{member.dateEnregistrement|date('d-m-Y')}}</p>
-        <p>Compte verifié: {{member.isVerified}}</p>
-        <button class="btn btn-success"><a href="{{ path('app_modifier_membre', {member: member.id})}}">Modifier</a></button>
-        <button class="btn btn-danger"><a href="{{ path('app_supprimer_membre', {member: member.id})}}?token={{ csrf_token('supprimer')}}">Supprimer</a></button>
-    </div>
-    </div>
-</section>
+    {% if "ROLE_SUPER_ADMIN" not in member.roles %}
+        <table class="table">
+            <tbody>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Nom:</th>
+                    <td>{{ member.nom }}</td>
+                </tr>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Prénom:</th>
+                    <td>{{ member.prenom }}</td>
+                </tr>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Email :</th>
+                    <td>{{ member.email }}</td>
+                </tr>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Adresse:</th>
+                    <td>{{ member.adresse }}</td>
+                </tr>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Ville:</th>
+                    <td>{{ member.ville }}</td>
+                </tr>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Code Postal:</th>
+                    <td>{{ member.codePostal}}</td>
+                </tr>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Date de Naissance:</th>
+                    <td>{{ member.dateNaissance|date('d-m-Y')}}</td>
+                </tr>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Date de Naissance:</th>
+                    <td>{{ member.dateEnregistrement|date('d-m-Y')}}</td>
+                </tr>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Compte vérifié:</th>
+                    <td>{{ member.isVerified}}</td>
+                </tr>
+                <tr class="text-color tab-respons">
+                    <th scope="col">Supprimer le compte:</th>
+                    <td><button class="btn"><a href="{{ path('app_supprimer_membre', {member: member.id})}}?token={{ csrf_token('supprimer')}}"><i class="fa-regular fa-trash-can" style="color: #ec0404;"></i></a></button></td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
 {% endfor %}
 
+</section>
 {% endblock %}

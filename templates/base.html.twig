@@ -26,6 +26,7 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+        
 
 
     </head>
@@ -59,14 +60,5 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
         
-        {# Custom JS #}
-        {# <script>
-        const jsData = {
-            urls: {
-                addToCart: "{{ absolute_url(path('app_ajouter_au_panier'))|escape('js') }}"
-            }
-        };
-        </script>
-        <script src="{{ asset('assets/js/app.js') }}"></script> #}
     </body>
 </html>

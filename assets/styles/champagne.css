@@ -1,13 +1,16 @@
+
+ /* --------------------------------CSS affichage des produits------------------------------ */
+
 .productChamp {
     display: grid ;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     column-gap: 1rem;
     row-gap: 2rem;
     margin: 1rem;
 }
 
 .articleChamp {
-    background-color: blanchedalmond;
+    background-color: #ead8c3;
     padding: 2em;
     text-align: center;
     border-radius: 10px;
@@ -19,17 +22,85 @@
 
 .titleChamp {
     text-align: center;
-    color: #ffffff;
-} 
+    color: goldenrod;
+}
 
-@media screen and (min-width: 900px) {
+
+@media screen and (min-width: 720px) {
     .productChamp {
-        grid-template-columns: repeat(3, 1fr); /* on passe à 3 colonnes pour les écrans de 900px et plus */
+        grid-template-columns: repeat(2, 1fr); /* on passe à 3 colonnes pour les écrans de 900px et plus */
     }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1024px) {
     .productChamp {
         grid-template-columns: repeat(4, 1fr); /* on passe à 4 colonnes pour les écrans de 1300px et plus */
+    }
+}
+
+/* ----------------------------------------- CSS Détails Champagne ----------------------------------  */
+
+.detailImg {
+    width: 100%;
+    max-width: 15rem;
+    border: 1px solid goldenrod;
+    border-radius: 8px;
+    transition: all 0.4s;
+    margin: 4em
+}
+
+.detailChamp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    margin: 5em 10em;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.caption {
+    margin: 2em;
+}
+
+.caption h1 {
+    font-size: 1.5rem;
+}
+
+.caption p {
+    font-size: 1rem;
+}
+
+.detailButton {
+    padding: 0.5em 1em;
+
+}
+
+@media screen and (max-width: 768px) {
+    .detailChamp {
+        flex-direction: column;
+        margin: 3em 5em;
+    }
+
+    .detailImg {
+        margin: 2em 0;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .detailChamp {
+        flex-direction: column;
+        margin: 3em 5em;
+    }
+
+    .detailImg {
+        margin: 2em 0;
     }
 }

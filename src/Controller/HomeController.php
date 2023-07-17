@@ -32,14 +32,7 @@ class HomeController extends AbstractController
         $this->userInfo = $app->getUser();
 
         $this->session = $requestStack->getSession();
-        if (null !== $this->userInfo->user) {
-            if (null !== $this->session->get('cartCount')) {
-                $this->cartCount = (int)$this->session->get('cartCount');
-            } else {
-                $this->session->set('cartCount', $cartManager->getCartCount($this->userInfo->user));
-                $this->cartCount = (int)$this->session->get('cartCount');
-            }
-        }
+
     }
 
     public function index(Helpers $app): Response

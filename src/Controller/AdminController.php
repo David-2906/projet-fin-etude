@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\Cepage;
 use App\Entity\Produit;
 use App\Entity\ResetPasswordRequest;
+use App\Entity\Transporter;
 use App\Entity\TypeProduit;
 use App\Entity\User;
 use App\Form\CepageType;
 use App\Form\ModifierCompteMembreType;
 use App\Form\ProduitType;
 use App\Form\RegistrationFormType;
+use App\Form\TransporterType;
 use App\Form\TypeProductType;
 use App\services\Helpers;
 use Doctrine\ORM\EntityManagerInterface;
@@ -55,7 +57,11 @@ class AdminController extends AbstractController
 
             $entityManager->persist($produit);
             $entityManager->flush();
-            return $this->redirectToRoute('app_admin');
+            $this->addFlash(
+                'success',
+                'Votre produit à été ajouté avec succès !'
+            );
+            return $this->redirectToRoute('app_champagne');
         }
 
         return $this->render('admin/dashboard.html.twig', [
@@ -103,6 +109,26 @@ class AdminController extends AbstractController
             'bodyId'=>$app->getBodyId('ADMIN_TYPE_PRODUIT'),
             'userInfo' => $this->user,
         ]);
+    }
+
+    public function addTransporter(Helpers $app, Request $request, EntityManagerInterface $entityManager): Response {
+        
+        $transporter = new Transporter;
+        $form = $this->createForm(TransporterType::class, $transporter);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($transporter);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_admin_transporter');
+        }
+
+        return $this->render('admin/transporter-dashboard.html.twig', [
+            'TransporterForm' => $form->createView(),
+            'bodyId'=>$app->getBodyId('ADMIN_TRANSPORTER'),
+            'userInfo'=> $this->user,
+        ]);
+        
     }
 
     public function membreManagement(Helpers $app): Response {

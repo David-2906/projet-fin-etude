@@ -28,6 +28,7 @@ parameters:
     ORDER_CONFIRMATION: "orderConfirmation"
     RESET_PASSWORD: "resetPassword"
     CONTACT: "contact"
+    FAQ_PAGE: "faq"
 
 
     # MEMBER_PROFILE: "profile"
@@ -37,6 +38,7 @@ parameters:
     ADMIN_CEPAGE: "adminCepage"
     ADMIN_TYPE_PRODUIT: "adminTypeProduit"
     ADMIN_MEMBERS_MANAGEMENT: "members-management"
+    ADMIN_TRANSPORTER: "transporter"
     # ADMIN_PRODUCTS_MANAGEMENT: "products-management"
     # ADMIN_ORDERS_MANAGEMENT: "orders-management"
     # ADMIN_CATEGORY_MANAGEMENT: "category-management"

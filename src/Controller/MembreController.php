@@ -58,6 +58,11 @@ class MembreController extends AbstractController
             $em->persist($user);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Votre compte à été modifié avec succès !'
+            );
+
             return $this->redirectToRoute('app_details_membre');
     }
         return $this->render('membre/modifier-compte.html.twig', [

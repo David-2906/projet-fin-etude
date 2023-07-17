@@ -1,15 +1,35 @@
 .img-accueil {
-   max-width: 100%;
+   margin-top: 1rem; 
+   width: 40%;
 }
 
 .accueil {
-    color: #ffffff;
-    line-height: 2rem;
+    color: #000000;
+    margin-top: 1rem;
+    line-height: 2.5rem;
+    font-size: 1.4rem
 }
 
-.accueil h2 {
+.titleHome {
     text-align: center;
-    /* line-height: 50vw; */
+    color: goldenrod;
+    
+}
+
+.backHome {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-top: 1rem;
+    padding: 1rem;
 }
 
 
+@media screen and (max-width: 1024px) {
+    .backHome {
+        flex-direction: column;
+    }
+    .img-accueil {
+        width: 100%;
+    }
+}

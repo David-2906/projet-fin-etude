@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin | Transporter Management {% endblock %}
+
+{% block body %}
+
+	<div class="container text-dark">
+		<div class="row">
+				{{ form_start(TransporterForm) }}
+				{{ form_row(TransporterForm.title) }}
+                {{ form_row(TransporterForm.content) }}
+                {{ form_row(TransporterForm.price) }}
+
+				<button type="submit" class="btn btn-success">Valider</button>
+				{{ form_end(TransporterForm) }}
+		</div>
+	</div>
+
+{% endblock %}

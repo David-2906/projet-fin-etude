@@ -31,7 +31,7 @@ class ChampagneController extends AbstractController
     private $cartCount;
     private $cartManager;
 
-    public function __construct(ContainerBagInterface $params, ManagerRegistry $doctrine, Security $security, RequestStack $requestStack, Helpers $app, PanierManager $cartManager){
+    public function __construct(ContainerBagInterface $params, ManagerRegistry $doctrine, Security $security, RequestStack $requestStack, Helpers $app,){
 
         $this->params = $params;
         $this->doctrine = $doctrine;
@@ -40,14 +40,8 @@ class ChampagneController extends AbstractController
         $this->userInfo = $app->getUser();
 
         $this->session = $requestStack->getSession();
-        if (null !== $this->userInfo->user) {
-            if(null !== $this->session->get('cartCount')) {
-                $this->cartCount = (int)$this->session->get('cartCount');
-            } else {
-                $this->session->set('cartCount', $cartManager->getCartCount($this->userInfo->user));
-                $this->cartCount = (int)$this->session->get('cartCount');
-            }
-        }
+
+
     }
 
     public function champagne(Helpers $app): Response
@@ -79,6 +73,10 @@ class ChampagneController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $em->persist($champagne);
             $em->flush();
+            $this->addFlash(
+                'success',
+                'Votre produit à été modifié avec succès !'
+            );
 
             return $this->redirectToRoute('app_champagne');
         }
@@ -96,6 +94,10 @@ class ChampagneController extends AbstractController
         if ($this->isCsrfTokenValid('supprimer', $request->query->get('token', ''))) {
             $em->remove($champagne);
             $em->flush();
+            $this->addFlash(
+                'success',
+                'Votre produit à été supprimé avec succès !'
+            );
             return $this->redirectToRoute('app_champagne');
         } else {
             throw new BadRequestException('Token CSRF Invalide.');

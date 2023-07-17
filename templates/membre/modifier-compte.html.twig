@@ -5,7 +5,7 @@
 {% block body %}
 
 <h1>Modifier mon profil</h1>
-	<div class="container text-light">
+	<div class="container text-dark">
 		<div class="row">
 				{{ form_start(modifierForm) }}
 				{{ form_row(modifierForm.email) }}
@@ -17,7 +17,7 @@
                 {{ form_row(modifierForm.ville) }}
                 {{ form_row(modifierForm.code_postal) }}
 
-				<button type="submit" class="btn">Valider</button>
+				<button type="submit" class="btn btn-primary">Valider</button>
 				{{ form_end(modifierForm) }}
 		</div>
 	</div>

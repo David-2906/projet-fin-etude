@@ -51,14 +51,32 @@ table {
 } */
 
 body {
-    background-color: #000000;
+    background-color: #ffffff;
+
+}
+
+
+
+footer {
+	border-top: 1px solid goldenrod;
+	background-color: #000000;
+	/* position: absolute;
+	bottom: 0;
+	width: 100%; */
+    /* bottom: 0;
+    height: 15vh;
+    left: 0;
+    right: 0; */
+	
+}
+main {
+	margin-top: 100px;
 }
 
 
 .logoNav {
-    width: 7em;
+    width: 6em;
 }
-
 
 .titleNav {
     color: goldenrod !important;
@@ -69,8 +87,23 @@ body {
 	color: goldenrod !important;
 }
 
+.login {
+	width: 50%;
+
+}
+
+.buttonMdp:hover {
+	background-color: goldenrod !important; 
+	color: #ffffff !important;
+}
 
 .colorButton {
 	background-color: goldenrod !important;
 }
 
+@media screen and (max-width: 768px) {
+	.titleNav {
+		display:none;
+	}
+
+}

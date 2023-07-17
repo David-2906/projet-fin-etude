@@ -1,10 +1,11 @@
+
         <section class="footer">
             <nav class="left-footer-menu">
                 <ul>
                     <li><a href="{{ path('app_legal') }}">Mentions legales</a></li>
                     <li><a href="{{ path('app_cgv')}}">Conditions générales de ventes</a></li>
                     <li><a href="{{ path('app_utilisation')}}">Conditions d'utilisation</a></li>
-                    <li><a href="{{ path('app_utilisation')}}">FAQ</a></li>
+                    <li><a href="{{ path('app_faq')}}">FAQ</a></li>
                     <li><a href="{{ path('app_cookies')}}">Vie privée et cookies</a></li>
                 </ul>
             </nav>
@@ -21,6 +22,7 @@
             </nav>
         </section>
         <section class="footer-footer">
-            <p class="paragraph">Interdiction de vente de boissons alcoolisées aux mineurs</p>
-            <p class="paragraph">L'ABUS D'ALCOOL EST DANGEREUX POUR LA SANTÉ. À CONSOMMER AVEC MODÉRATION</p>
+            {# <p class="paragraph">Interdiction de vente de boissons alcoolisées aux mineurs</p> #}
+            <img class="imageFooter" src="{{ asset('./assets/img/Bandeau-interdiction-vente-alcool-mineur.jpg') }}" alt="Bandeau de prévention">
+            <p class="paragraph">L'ABUS D'ALCOOL EST DANGEREUX POUR LA SANTÉ. À CONSOMMER AVEC MODÉRATION</p>           
         </section>

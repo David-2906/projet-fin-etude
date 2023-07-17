@@ -69,4 +69,11 @@ class StaticController extends AbstractController
             'userInfo' => $this->user,
         ]);
     }
+
+    public function faq(Helpers $app): Response {
+        return $this->render('static/faq.html.twig',[
+            'bodyId' => $app->getBodyId('FAQ_PAGE'),
+            'userInfo' => $this->user,
+        ]);
+    }
 }

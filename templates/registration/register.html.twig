@@ -9,7 +9,8 @@
 	{% endfor %}
 
 	<h1 class="mb-3 liNav">Inscription</h1>
-	<div class="container text-light">
+	<p class="Contact">(*) Champs obligatioire</p>
+	<div class="container text-dark w-50">
 		<div class="row">
 				{{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
 				{{ form_row(registrationForm.email) }}

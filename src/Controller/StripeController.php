@@ -2,17 +2,23 @@
 
 namespace App\Controller;
 
+use App\Entity\Order;
+use App\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Stripe;
-use App\Service\AppHelpers;
+use Stripe\Stripe;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Security;
-use App\Service\PanierManager;
+use App\services\CartService;
 use App\services\Helpers;
+use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Checkout\Session;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
-
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGenerator;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class StripeController extends AbstractController
 
@@ -22,11 +28,12 @@ class StripeController extends AbstractController
     private $app;
     private $db;
     private $userInfo;
-    private $cartCount;
     private $session;
+    private EntityManagerInterface $em;
+    private UrlGeneratorInterface $generator;
 
 
-    public function __construct(Security $security, ManagerRegistry $doctrine, Helpers $app, RequestStack $requestStack)
+    public function __construct(ManagerRegistry $doctrine, Helpers $app, RequestStack $requestStack, EntityManagerInterface $em, UrlGeneratorInterface $generator)
 
     {
 
@@ -34,113 +41,98 @@ class StripeController extends AbstractController
         $this->bodyId = $app->getBodyId('ORDER_CONFIRMATION');
         $this->db = $doctrine->getManager();
         $this->userInfo = $app->getUser();
+        $this->em = $em;
+        $this->generator = $generator;
 
 
         $this->session = $requestStack->getSession();
-
-
-        // on simule le montant obtenu depuis la page de commande:
-
-        $this->session->set('orderTotal', 52.6);
+    
 
     }
 
-    public function index(): Response
-
-    {
-
-        return $this->render('stripe/index.html.twig', [
-
-            'clef_stripe' => $_ENV["STRIPE_KEY"],
-
-            'bodyId' => $this->bodyId,
-
-            'cartCount' => $this->cartCount,
-
-            'userInfo' => $this->userInfo,
-
-            'orderTotal' => $this->session->get('orderTotal'),
-
-        ]);
-
-    }
+    
+    public function index($reference): RedirectResponse {
 
 
-    public function createCharge(Request $request)
+        $productStripe = [];
 
-    {
+        $order = $this->em->getRepository(Order::class)->findOneBy(['reference' => $reference]);
 
-        Stripe\Stripe::setApiKey($_ENV["STRIPE_SECRET"]);
+       
 
-        try {
+        if (!$order) {
+            return $this->redirectToRoute('app_mon_panier');
+        }
 
-            Stripe\Charge::create([
+        foreach ($order->getOrderDetails()->getValues() as $produit) {
 
-                "amount" => $this->session->get('orderTotal') * 100,
+            $productData = $this->em->getRepository(Produit::class)->findOneBy(['designation' => $produit->getProduct()]);
 
-                "currency" => "eur",
+            $productStripe[] = [
+                'price_data' => [
+                    'currency' => 'eur',
+                    'unit_amount' => $productData->getPrix()*100,
+                    'product_data' => [
+                        'name' => $produit->getProduct(),
+                    ]
+                    ],
+                    'quantity' => $produit->getQuantity()
+                ];
+        }
 
-                "source" => $request->request->get('stripeToken'),
+            $productStripe[] = [
+                'price_data' => [
+                    'currency' => 'eur',
+                    'unit_amount' => $order->getTransporterPrice()*100,
+                    'product_data' => [
+                        'name' => $order->getTransporterName()
+                    ]
+                    ],
+                    'quantity' => 1, // Il n'y aura toujours qu'un seul transporteur choisi donc on set la quantity a 1
+                ];
 
-                "description" => "Payment Test"
+                Stripe::setApiKey($_ENV["STRIPE_SECRET"]);
+
+        $checkout_session = Session::create([
+            'customer_email' => $this->getUser()->getEmail(),
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                $productStripe
+            ]],
+            'mode' => 'payment',
+            'success_url' => $this->generator->generate('app_stripe_success', [
+                'reference' => $order->getReference()
+            ], UrlGenerator::ABSOLUTE_URL),
+            'cancel_url' => $this->generator->generate('app_stripe_fail', [
+                'reference' => $order->getReference()
+            ], UrlGeneratorInterface::ABSOLUTE_URL),
 
             ]);
 
-        } catch (\Exception $e) {
+            return new RedirectResponse($checkout_session->url);
 
-            return $this->redirectToRoute('app_stripe_fail', [
-
-                'error' => $e->getMessage(),
-
-            ], Response::HTTP_SEE_OTHER);
-
-        }
-
-
-        return $this->redirectToRoute('app_stripe_success', [], Response::HTTP_SEE_OTHER);
 
     }
 
+    public function stripeSuccess($reference, CartService $Service, SessionInterface $session): Response {
 
-    public function orderConfirmation(): Response
-
-    {
+        $session->remove('cart');
 
         return $this->render('stripe/order_confirmation.html.twig', [
-
             'bodyId' => $this->bodyId,
 
-            'cartCount' => $this->cartCount,
-
             'userInfo' => $this->userInfo,
-
-            'orderTotal' => $this->session->get('orderTotal'),
-
         ]);
-
     }
 
-
-    public function paymentFailure(Request $request): Response
-
-    {
-
-        $error = $request->get('error');
-
+    public function stripeError($reference, CartService $service): Response {
+        
         return $this->render('stripe/payment_failure.html.twig', [
-
             'bodyId' => $this->bodyId,
 
-            'cartCount' => $this->cartCount,
-
             'userInfo' => $this->userInfo,
-
-            'orderTotal' => $this->session->get('orderTotal'),
-
-            'error' => $error,
-
         ]);
-
     }
+
 
 }

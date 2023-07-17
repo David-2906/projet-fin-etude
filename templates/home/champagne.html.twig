@@ -4,15 +4,26 @@
 
 {% block body %}
     <h1 class="titleChamp">Nos Champagnes</h1>
+        	        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4 text-center">
+                {{message}}
+            </div>
+        {% endfor %}
 
     <section class="productChamp">
+
 {% for champagne in champagnes %}
     <article class="articleChamp">
         <h2>{{champagne.designation}}</h2>
         <img class="productImage" src="{{champagne.image}}" alt="">
-        <p>{{champagne.prix}} €</p>
+        <p>{{champagne.prix}} € TTC</p>
         <p>{{champagne.millesime}}</p>
+        <p>{{champagne.format}}</p>
+        <p>{{champagne.cepage}}</p>
+
         <button><a href="{{ path('app_detail_champagne', {champagne: champagne.id})}}">Détails</a></button>
+        {# <button><a href="{{ path('app_ajout_panier', {champagne: champagne.id})}}">Ajouter au panier</a></button> #}
+        <button><a href="{{ path('app_ajout_panier', {'id': champagne.id})}}">Ajouter au panier</a></button>
     {% if userInfo.isAdmin %}
         <button><a href="{{ path('app_modifier_champagne', {champagne: champagne.id})}}">Modifier</a></button>
         <button><a href="{{ path('app_supprimer_champagne', {champagne: champagne.id})}}?token={{ csrf_token('supprimer') }}">Supprimer</a></button>
