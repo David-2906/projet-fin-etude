@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230418122802 extends AbstractMigration
+final class Version20230721132249 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,16 +20,12 @@ final class Version20230418122802 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE produit ADD cepage_id INT NOT NULL');
-        $this->addSql('ALTER TABLE produit ADD CONSTRAINT FK_29A5EC278AC6BB8A FOREIGN KEY (cepage_id) REFERENCES cepage (id)');
-        $this->addSql('CREATE INDEX IDX_29A5EC278AC6BB8A ON produit (cepage_id)');
+        $this->addSql('DROP TABLE faq');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE produit DROP FOREIGN KEY FK_29A5EC278AC6BB8A');
-        $this->addSql('DROP INDEX IDX_29A5EC278AC6BB8A ON produit');
-        $this->addSql('ALTER TABLE produit DROP cepage_id');
+        $this->addSql('CREATE TABLE faq (id INT AUTO_INCREMENT NOT NULL, questions TINYTEXT CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_general_ci`, reponses TINYTEXT CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_general_ci`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
     }
 }

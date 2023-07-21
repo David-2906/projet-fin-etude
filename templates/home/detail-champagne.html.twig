@@ -5,7 +5,8 @@
 {% block body %}
 
     <section class="detailChamp">
-        <img class="detailImg" src="{{champagne.image}}" alt="Image du champagne séléectionné">
+        <img class="productImage" src="{{ vich_uploader_asset(champagne, 'imageFile') }}" alt="Image du champagne seléctionné" />
+
             <div class="caption">
                 <h1>Nom du champagne : {{champagne.designation}}</h1>
                 <p>Description: {{champagne.description}}</p>

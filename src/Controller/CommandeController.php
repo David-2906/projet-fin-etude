@@ -100,6 +100,12 @@ class CommandeController extends AbstractController
 
 
                 $this->em->persist($orderDetails);
+
+                $product = $produit['produit'];
+                $quantiteCommandee = $produit['quantity'];
+                $nouveauStock = $product->getStock() - $quantiteCommandee;
+                $product->setStock($nouveauStock);
+                $this->em->persist($product);
             }
 
             $this->em->flush();

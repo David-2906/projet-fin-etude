@@ -84,12 +84,12 @@ main {
 }
 
 .liNav {
-	color: goldenrod !important;
+	color: goldenrod!important;
 }
 
 .login {
 	width: 50%;
-
+    margin: 10rem auto;
 }
 
 .buttonMdp:hover {

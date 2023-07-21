@@ -22,7 +22,7 @@
 
 			
 			{% set total = total + (value.produit.prix * value.quantity) %}
-						<img src="{{value.produit.image}}" alt="">
+						<img src="{{ vich_uploader_asset(value.produit, 'imageFile') }}" alt="Image du champagne selectionné">
 						<div class="content">
 							<h3>{{ value.produit.designation}}</h3>
 							<h4>Prix : {{ (value.produit.prix * value.quantity)|number_format(2, ',','.') }} €</h4>

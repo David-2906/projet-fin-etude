@@ -3,56 +3,71 @@
 {% block title %}Admin | Membre Management {% endblock %}
 
 {% block body %}
-<h1 class="text-dark text-center">Utilisateurs inscrits</h1>
-<section class="container my-3 d-flex justify-content-between">
-{% for member in members %}
-    {% if "ROLE_SUPER_ADMIN" not in member.roles %}
-        <table class="table">
-            <tbody>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Nom:</th>
-                    <td>{{ member.nom }}</td>
-                </tr>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Prénom:</th>
-                    <td>{{ member.prenom }}</td>
-                </tr>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Email :</th>
-                    <td>{{ member.email }}</td>
-                </tr>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Adresse:</th>
-                    <td>{{ member.adresse }}</td>
-                </tr>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Ville:</th>
-                    <td>{{ member.ville }}</td>
-                </tr>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Code Postal:</th>
-                    <td>{{ member.codePostal}}</td>
-                </tr>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Date de Naissance:</th>
-                    <td>{{ member.dateNaissance|date('d-m-Y')}}</td>
-                </tr>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Date de Naissance:</th>
-                    <td>{{ member.dateEnregistrement|date('d-m-Y')}}</td>
-                </tr>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Compte vérifié:</th>
-                    <td>{{ member.isVerified}}</td>
-                </tr>
-                <tr class="text-color tab-respons">
-                    <th scope="col">Supprimer le compte:</th>
-                    <td><button class="btn"><a href="{{ path('app_supprimer_membre', {member: member.id})}}?token={{ csrf_token('supprimer')}}"><i class="fa-regular fa-trash-can" style="color: #ec0404;"></i></a></button></td>
-                </tr>
-            </tbody>
-        </table>
-    {% endif %}
-{% endfor %}
 
-</section>
+{# <div class="container">
+    <div class="row text-center">
+     <h1 class="text-dark text-center">Utilisateurs inscrits</h1>
+        {% for member in members %}
+        {% if "ROLE_SUPER_ADMIN" not in member.roles %}
+            <div class="col-12 col-sm-4 p-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Email :</h5>
+                        <p class="card-text">{{ member.email }}</p>
+                        <hr>
+                        <h5 class="card-title">Nom:</h5>
+                        <p class="card-text">{{ member.nom }}</p>
+                        <hr>
+                        <h5 class="card-title">Prenom :</h5>
+                        <p class="card-text">{{ member.prenom }}</p>
+                        <hr>
+                        <h5 class="card-title">Adresse :</h5>
+                        <p class="card-text">{{ member.adresse }}</p>
+                        <hr>
+                        <h5 class="card-title">Ville :</h5>
+                        <p class="card-text">{{ member.ville }}</p>
+                        <hr>
+                        <h5 class="card-title">Code Postal :</h5>
+                        <p class="card-text">{{ member.codePostal }}</p>
+                        <hr>
+                        <h5 class="card-title">Date de naissance :</h5>
+                        <p class="card-text">{{ member.dateNaissance|date('d-m-Y') }}</p>
+                        <hr>
+                        <h5 class="card-title">Date d'enregistrement :</h5>
+                        <p class="card-text">{{ member.dateEnregistrement|date('d-m-Y') }}</p>
+                        <hr>
+                        <h5 class="card-title"> Supprimer le compte</h5>
+                        <a class="btn" href="{{ path('app_supprimer_membre', {member: member.id})}}?token={{ csrf_token('supprimer')}}"><i class="fa-regular fa-trash-can" style="color: #ec0404;"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div> #}
+<div class="container ml-4">
+ <h1 class="text-dark text-center liNav">Utilisateurs inscrits</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Supprimer</th>
+    </tr>
+  </thead>
+     {% for member in members %}
+        {% if "ROLE_SUPER_ADMIN" not in member.roles %}
+  <tbody>
+    <tr>
+      <td>{{ member.email }}</td>
+      <td>{{ member.nom }}</td>
+      <td>{{ member.prenom }}</td>
+      <td><a class="btn" href="{{ path('app_supprimer_membre', {member: member.id})}}?token={{ csrf_token('supprimer')}}"><i class="fa-regular fa-trash-can" style="color: #ec0404;"></i></a> </td>
+    </tr>
+  </tbody>
+              {% endif %}
+        {% endfor %}
+</table>
+</div>
 {% endblock %}

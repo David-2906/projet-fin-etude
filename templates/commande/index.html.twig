@@ -40,7 +40,7 @@
                 {% for product in recapPanier %}
                     {% set total = total + (product.produit.prix * product.quantity) %}
                     <div class="d-sm-flex align-items-center border-top py-4">
-                        <img src="{{product.produit.image}}" width="80" height="80" alt="">
+                        <img src="{{ vich_uploader_asset(product.produit, 'imageFile') }}" width="80" height="80" alt="">
                         <div class="w-100 pt-1 ps-sm-4">
                             <div class="d-block">
                                 <div class="me-3" style="position: relative; top: 1px">
