@@ -5,16 +5,16 @@
 {% block body %}
 
     <section class="detailChamp">
-        <img class="productImage" src="{{ vich_uploader_asset(champagne, 'imageFile') }}" alt="Image du champagne seléctionné" />
+        <img class="detailImg" src="{{ vich_uploader_asset(champagne, 'imageFile') }}" alt="Image du champagne seléctionné" />
 
             <div class="caption">
-                <h1>Nom du champagne : {{champagne.designation}}</h1>
-                <p>Description: {{champagne.description}}</p>
-                <p>Prix: {{champagne.prix}} €</p>
-                <p>Milésime: {{champagne.millesime}}</p>
-                <p>Format: {{champagne.format}}</p>
-                <p>Cépage: {{champagne.cepage}}</p>
-                <p>Type: {{champagne.typeProduit}}</p>
+                <h1 class="liNav mb-4">{{champagne.designation}}</h1>
+                <p><span class="fw-bold">Description:</span> {{champagne.description}}</p>
+                <p><span class="fw-bold">Prix:</span> {{champagne.prix}} €</p>
+                <p><span class="fw-bold">Milésime:</span> {{champagne.millesime}}</p>
+                <p><span class="fw-bold">Format:</span> {{champagne.format}}</p>
+                <p><span class="fw-bold">Cépage:</span> {{champagne.cepage}}</p>
+                <p><span class="fw-bold">Type:</span> {{champagne.typeProduit}}</p>
                 <div class="buttonContainer">
                     <button class="detailButton"><a href="{{ path('app_ajout_panier', {'id': champagne.id})}}">Ajouter au panier</a></button>
                     <button class="detailButton"><a href="{{ path('app_champagne')}}">Retour</a></button>

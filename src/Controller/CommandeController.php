@@ -84,7 +84,7 @@ class CommandeController extends AbstractController
             $order->setCreatedAt($datetime);
             $order->setTransporterName($transporter->getTitle());
             $order->setTransporterPrice($transporter->getPrice());
-            $order->setIsPaid(0);
+            $order->setIsPaid(1);
 
             $this->em->persist($order);
             
@@ -96,7 +96,7 @@ class CommandeController extends AbstractController
                 $orderDetails->setQuantity($produit['quantity']);
                 $orderDetails->setPrice($produit['produit']->getPrix() * $produit['quantity']);
                 $orderDetails->setProduct($produit['produit']->getDesignation());
-                $orderDetails->setTotalRecap(($produit['produit']->getPrix() * $produit['quantity']) + + $transporter->getPrice() );
+                $orderDetails->setTotalRecap(($produit['produit']->getPrix() * $produit['quantity']) );
 
 
                 $this->em->persist($orderDetails);

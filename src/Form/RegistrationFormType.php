@@ -96,7 +96,7 @@ class RegistrationFormType extends AbstractType
                     new Regex('/[a-z]/', 'Votre mot de passe doit contenir au moins une lettre minuscule'),
                     new Regex('/[A-Z]/', 'Votre mot de passe doit contenir au moins une lettre majuscule'),
                     new Regex('/[0-9]/', 'Votre mot de passe doit contenir au moins un chiffre'),
-                    new Regex('/[\$\^@\\/\+\*_\-\.]/', 'Votre mot de passe doit contenir au moins un caractère spécial'),
+                    new Regex('/[\$\^@\\/\+\*_\-\.\!]/', 'Votre mot de passe doit contenir au moins un caractère spécial'),
                 ],
             ])
         ;

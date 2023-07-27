@@ -18,7 +18,7 @@
 
 .productImage {
     margin-top: 10px;
-    width: 3rem;
+    max-width: 3rem;
 }
 
 .titleChamp {
@@ -42,10 +42,7 @@
 /* ----------------------------------------- CSS Détails Champagne ----------------------------------  */
 
 .detailImg {
-    width: 100%;
-    max-width: 15rem;
-    border: 1px solid goldenrod;
-    border-radius: 8px;
+    max-width: 6rem;
     transition: all 0.4s;
     margin: 4em
 }
@@ -55,20 +52,24 @@
     justify-content: center;
     align-items: center;
     max-width: 100%;
-    margin: 5em 10em;
+    margin: 10em;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     overflow: hidden;
+    background-color: #ead8c3;
 }
 
 .buttonContainer {
     display: flex;
     justify-content: space-between;
+    column-gap: 1.5rem;
     margin-top: 1em;
 }
 
 .caption {
+    text-align: center;
     margin: 2em;
+
 }
 
 .caption h1 {
@@ -81,7 +82,8 @@
 
 .detailButton {
     padding: 0.5em 1em;
-
+    border: 2px solid goldenrod;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 768px) {

@@ -34,6 +34,12 @@ app_supprimer_compte:
     path: /membre/mon-compte/supprimer-mon-compte/{id}
     controller: App\Controller\MembreController::supprimerCompte
     methods: GET
+
+app_mes_commandes:
+    path: /membre/mon-compte/mes-commandes
+    controller: App\Controller\MembreController::mesCommandes
+    methods: GET
+    
 # Pages statiques
 
 app_legal:
@@ -113,16 +119,6 @@ app_supprimer_panier:
     path: /supprimer/mon-panier
     controller: App\Controller\CartController::delete
     methods: GET|POST
-
-app_panier:
-    path: /panier/details
-    controller: App\Controller\PanierController::cartDetails
-    methods: GET|POST
-
-app_ajouter_au_panier:
-    path: /panier
-    controller: App\Controller\PanierController::panier
-    methods: POST
 
 
 app_commande:

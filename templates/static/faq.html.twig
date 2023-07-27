@@ -4,30 +4,28 @@
 
 
 {% block body %}
+<section class="home">
+    <div class="container accueil mb-5 mt-4">
+        <div class="d-flex justify-content-center mb-4">
+            <img class="w-25"src="{{ asset('./assets/img/faq-g31b7da348_640.jpg') }}" alt="Image FAQ">
+        </div>
+            {# <h1 class="text-center liNav">Foire Aux Questions</h1> #}
+                <h3>1. Qu'est-ce que Le Domaine du Roi ?</h3>
+                    <p>Le Domaine du Roi est un site e-commerce de vente de champagne proposant une sélection de cuvées prestigieuses issues de notre domaine viticole familial établi depuis plusieurs générations.</p>
+                <h3>2. Quels types de champagne proposez-vous ?</h3>
+                    <p>Nous proposons une gamme variée de champagnes allant des cuvées bruts aux millésimés, en passant par des champagnes rosés. Toutes nos cuvées sont produites avec passion et expertise pour garantir une expérience de dégustation inoubliable.</p>
+                <h3>3. D'où proviennent vos raisins ?</h3>
+                    <p>Les raisins utilisés pour la production de nos champagnes proviennent de notre propre vignoble local situé dans une région viticole renommée, propice à la culture de raisins de qualité</p>
+                <h3>Comment passer une commande sur Le Domaine du Roi ?</h3>
+                    <p>Pour passer une commande, il vous suffit de sélectionner les champagnes de votre choix, les ajouter à votre panier, puis suivre les étapes du processus de commande. Il vous faudra créer un compte auparavant afin de pouvoir passer commande sur notre site internet.</p>
+                <h3>4. Quels sont les délais de livraison ?</h3>
+                    <p>Les délais de livraison dépendent de la destination et du mode de livraison choisi. Ils sont généralement indiqués lors de la finalisation de la commande.</p>
+                <h3>5. Quels sont les modes de paiement acceptés ?</h3>
+                    <p>Nous acceptons les paiements par carte bancaire (Visa, Mastercard, Cartes Bancaires en France ou Interac au Canada.)   </p>
+                <h3>6. Offrez-vous une garantie satisfaction ?</h3>
+                    <p class="mb-4">Nous sommes engagés envers la satisfaction de nos clients. Si vous rencontrez le moindre problème avec votre commande, veuillez nous contacter rapidement, et nous ferons de notre mieux pour résoudre la situation.</p>
 
-<img src="{{ asset('./assets/img/faq-g31b7da348_640.jpg') }}" alt="">
-<h1>Foire Aux Questions</h1>
-        <h3>Pourquoi faut-il se creer un compte sur Le domaine du Roi?</h3>
-        <p>Vous créer un compte sur LeVignobleBio vous permet de passer des commandes mais vous donne également accès à des fonctionnalités supplémentaires : 
-        <br>Consulter l’historique de vos commandes, ajouter vos vins préférés à votre liste de favoris, gérer vos adresses de livraison et de facturation.
-        <br>Vous pouvez commander les vins de votre choix et vous les faire livrer chez vous. </p>
-
-        <h3>Comment passer une commande ?</h3>
-        <p>Vous ajoutez simplement les vins que vous souhaitez à votre panier et suivez le processus de commande. 
-        <br>Il vous sera demandé soit de vous connecter (si vous avez déjà un compte), soit de collecter les informations nécessaires à la création d’un compte.</p>
-
-        <h3>Comment les vigneron(ne)s sont sélectionnés</h3>
-        <p>Les artisans vignerons que nous sélectionnons travaillent de façon authentique, dans le respect de la vigne et de l’environnement.
-            <br>Ces hommes et ces femmes sont porteurs de valeurs, et il nous tient à cœur de les faire connaître.
-            <br>Ils fuient l’uniformité et travaillent sans maquillage, sans rechercher à développer de manière artificielle un « goût susceptible de plaire au marché ».
-            <br>Nous entretenons dans la durée des relations de proximité et de confiance avec eux, les rencontrons régulièrement et travaillons sans intermédiaire, en circuit court.</p>
-
-        <h3>Ma commande n’arrive pas – que puis-faire ?</h3>
-        <p>Au moment de l’expédition de votre commande, LeVignobleBio vous a envoyé un e-mail contenant un lien vers le site de notre transporteur.
-            <br>Cliquez sur ce lien, il vous permettra de visualiser le N° de suivi de votre colis ainsi que l’avancement de la livraison.
-            <br>En cas de souci (perte du mail), contactez-nous.</p>
-          
-        <h3>Est-il préférable d’attendre avant de consommer les vins livrés ou puis-je les ouvrir rapidement ?</h3>
-        <p>Il est préférable de laisser les bouteilles reposer au moins 1 ou 2 jours dans un endroit frais (entre 12 et 15°C) de les ouvrir.
-            <br>Pensez également à les carafer une heure avant dégustation.</p>
+                    <p>Si vous ne trouvez pas votre bonheur dans ces réponses, veuillez contacter le site via notre rubrique <a href="{{ path('app_contact')}}">"Contactez nous"</a></p>
+    </div>
+</section>
 {% endblock %}

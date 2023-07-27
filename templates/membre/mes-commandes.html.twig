@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Commandes{% endblock %}
+
+{% block body %}
+    
+        {# <h1 class="text-center liNav">Mes Commandes</h1>
+    {% if commandes is empty %}
+
+        <p>Vous n'avez pas encore passé de commande sur notre site.</p>
+        <p class="liNav">Jetez un oeil à nos champagne ! <a href="{{path('app_champagne')}}"></p>
+
+    {% else %}
+        <div class="container mb-5">
+            <div class="row">
+                {% for commande in commandes %}
+                    <div class="col-md-6">
+                        <div class="commande">
+                            <h3 class="fw-bold">Commande N° {{ commande.reference }}</h3>
+                            <p><span class="fw-bold">Adresse de livraison :</span> {{ commande.user.adresse }}, {{ commande.user.codePostal }} {{ commande.user.ville }}</p>
+                            <p><span class="fw-bold">Transporteur :</span>  {{ commande.transporterName }}</p>
+                            <p><span class="fw-bold">Prix du transporteur : </span> {{ commande.transporterPrice }} €</p>
+                            <p><span class="fw-bold">Produits :</span> </p>
+                                <ul>
+                                    {% for detail in commande.orderDetails %}
+                                        <li><span class="fw-bold">Désignation:</span> {{ detail.product }} - <span class="fw-bold">Nombre de bouteille:</span> {{ detail.quantity }} - Prix: {{ detail.price }} € </li>
+                                    {% endfor %}
+                                </ul>  
+                            {% set totalPrice = commande.transporterPrice %}
+                                {% for detail in commande.orderDetails %}
+                                   {% set totalPrice = totalPrice + detail.price %}
+                                {% endfor %}
+                                
+                    <p><span class="fw-bold">Prix total :</span> {{ totalPrice }} €</p>                       
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %} #}
+
+
+        <div class="container mb-5">
+        <h1 class="text-center liNav">Mes Commandes</h1>
+
+        {% if commandes is empty %}
+            <p class="text-center mt-4">Vous n'avez pas encore passé de commande sur notre site.</p>
+            <p class="text-center mt-2">Jetez un œil à nos champagnes ! <a href="{{ path('app_champagne') }}">ici</a></p>
+        {% else %}
+            <div class="row mt-5">
+                {% for commande in commandes %}
+                    <div class="col-lg-6 col-md-8 col-sm-10 mx-auto mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="fw-bold m-0">Commande N° {{ commande.reference }}</h3>
+                            </div>
+                            <div class="card-body">
+                                <p><span class="fw-bold">Adresse de livraison :</span> {{ commande.user.adresse }}, {{ commande.user.codePostal }} {{ commande.user.ville }}</p>
+                                <p><span class="fw-bold">Transporteur :</span>  {{ commande.transporterName }}</p>
+                                <p><span class="fw-bold">Prix du transporteur :</span> {{ commande.transporterPrice }} €</p>
+                                <p><span class="fw-bold">Produits :</span></p>
+                                <ul class="list-group mb-3">
+                                    {% for detail in commande.orderDetails %}
+                                        <li class="list-group-item">
+                                            <span class="fw-bold">Désignation :</span> {{ detail.product }} -
+                                            <span class="fw-bold">Nombre de bouteilles :</span> {{ detail.quantity }} -
+                                            <span class="fw-bold">Prix :</span> {{ detail.price }} €
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                {% set totalPrice = commande.transporterPrice %}
+                                {% for detail in commande.orderDetails %}
+                                    {% set totalPrice = totalPrice + detail.price %}
+                                {% endfor %}
+                                <p class="fw-bold">Prix total : {{ totalPrice }} €</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

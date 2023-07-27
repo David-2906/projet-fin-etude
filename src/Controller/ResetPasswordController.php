@@ -133,6 +133,11 @@ class ResetPasswordController extends AbstractController
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
+            $this->addFlash(
+                'success',
+                'Votre mot de passe à été modifié avec succès !'
+            );
+
             return $this->redirectToRoute('app_home');
         }
 
@@ -171,9 +176,9 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('david.pires2906@gmail.com', 'Le Domaine du Roi'))
+            ->from(new Address('contact@le-domaine-du-roi.fr', 'Le Domaine du Roi'))
             ->to($user->getEmail())
-            ->subject('Your password reset request')
+            ->subject('Votre requête de changement de mot de passe')
             ->htmlTemplate('reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,

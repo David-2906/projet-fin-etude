@@ -1,16 +1,37 @@
 #profilUser {
-    display: grid !important;
-    grid-template-columns: 2fr !important;
-    /* grid-template-rows: 30% repeat(2, 10rem); */
-    column-gap: 2rem !important;
-    /* row-gap: 4rem; */
-    line-height: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
 }
 
-.afficheUser {
-    border: 1px solid #ffffff;
+.compteClient{
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
 }
 
-.afficheCommande {
-    border: 1px solid #ffffff;
+.afficheUser, .afficheCommande {
+    text-align: center;
+    padding: 8rem;
+    margin: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    background-color: #ead8c3;
+    color: #fff;
+    border: 4px solid #000000
+}
+
+
+@media (max-width: 768px) {
+    #profilUser {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .afficheUser, .afficheCommande {
+        width: 90%;
+        padding: 2rem;
+        margin: 1rem;
+    }
 }

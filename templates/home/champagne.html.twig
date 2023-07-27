@@ -7,7 +7,7 @@
 
         <p class="container accueil">Découvrez notre prestigieuse collection de champagnes au Domaine du Roi, une sélection raffinée qui vous fera voyager au cœur de l'art de vivre champenois.
         <br>
-        Parcourez notre gamme variée, allant des assemblages équilibrés aux millésimes d'exception, pour trouver le champagne qui enchantera vos papilles lors de moments mémorables et de célébrations inoubliables.
+        Parcourez notre gamme variée, en format 75cl ou 1.5L au choix, allant des assemblages équilibrés aux millésimes d'exception, pour trouver le champagne qui enchantera vos papilles lors de moments mémorables et de célébrations inoubliables.
         </p>
 
         	        {% for message in app.flashes('success') %}
@@ -22,16 +22,16 @@
     <article class="articleChamp">
         <h2>{{champagne.designation}}</h2>
         <img class="productImage" src="{{ asset('/images/products/' ~ champagne.imageName)}}" alt="Image du champagne seléctionné">
-        <p>{{champagne.prix}} € TTC</p>
-        <p>{{champagne.millesime}}</p>
-        <p>{{champagne.format}}</p>
-        <p>{{champagne.cepage}}</p>
-        <button class="mt-4"><a href="{{ path('app_detail_champagne', {champagne: champagne.id})}}">Détails</a></button>
+        <p><span class="fw-bold">Prix:</span> {{champagne.prix}} € TTC</p>
+        <p><span class="fw-bold">Millésime:</span> {{champagne.millesime}}</p>
+        <p><span class="fw-bold">Format:</span> {{champagne.format}}</p>
+        <p><span class="fw-bold">Cépage:</span> {{champagne.cepage}}</p>
+        <button class="detailButton mt-4"><a href="{{ path('app_detail_champagne', {champagne: champagne.id})}}">Détails</a></button>
         {# <button><a href="{{ path('app_ajout_panier', {champagne: champagne.id})}}">Ajouter au panier</a></button> #}
-        <button class="mt-4"><a href="{{ path('app_ajout_panier', {'id': champagne.id})}}">Ajouter au panier</a></button>
+        <button class="detailButton mt-4"><a href="{{ path('app_ajout_panier', {'id': champagne.id})}}">Ajouter au panier</a></button>
     {% if userInfo.isAdmin %}
-        <button class="mt-4"><a href="{{ path('app_modifier_champagne', {champagne: champagne.id})}}">Modifier</a></button>
-        <button class="mt-4"><a href="{{ path('app_supprimer_champagne', {champagne: champagne.id})}}?token={{ csrf_token('supprimer') }}">Supprimer</a></button>
+        <button class="detailButton mt-4"><a href="{{ path('app_modifier_champagne', {champagne: champagne.id})}}">Modifier</a></button>
+        <button class="detailButton mt-4"><a href="{{ path('app_supprimer_champagne', {champagne: champagne.id})}}?token={{ csrf_token('supprimer') }}">Supprimer</a></button>
     {% endif %}
     </article>
 

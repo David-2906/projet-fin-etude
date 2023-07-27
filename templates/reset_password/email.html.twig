@@ -1,9 +1,26 @@
-<h1>Hi!</h1>
+{# <h1>Bonjour</h1>
 
-<p>To reset your password, please visit the following link</p>
+<p>Pour reinitialiser votre mot de passe, veuillez cliquer sur le lien suivant.</p>
 
 <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
 
-<p>This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+<p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
 
-<p>Cheers!</p>
+<p>Cordialement</p> #}
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <!-- En-tête de l'e-mail avec le logo -->
+                <div class="text-center">
+                    <img src="https://le-domaine-du-roi.fr/assets/img/Fichier_72x.png" alt="Logo de votre site" class="img-fluid img-thumbnail rounded-circle mb-4" style="width:25%">
+                    <h3>Bonjour,</h3>
+                </div>
+                <!-- Contenu de l'e-mail -->
+                <p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant :</p>
+                <a href="{{ url('app_reset_password', {token: resetToken.token}) }}" class="btn btn-primary">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+                <p class="mt-3">Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+                <p class="mt-3">Cordialement,</p>
+            </div>
+        </div>
+    </div>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Order;
 use App\Entity\User;
 use App\Form\ModifierCompteMembreType;
 use App\Form\RegistrationFormType;
@@ -18,7 +19,6 @@ class MembreController extends AbstractController
 {
     private string $bodyId;
     private $user;
-    private $cartCount;
 
     public function __construct(Helpers $app)
     {
@@ -34,7 +34,7 @@ class MembreController extends AbstractController
             // 'controller_name' => 'MembreController',
             'bodyId' => $app->getBodyId('MEMBER_DASHBOARD'),
             'userInfo' => $this->user,
-            'cartCount' => $this->cartCount,
+
         ]);
     }
 
@@ -43,7 +43,6 @@ class MembreController extends AbstractController
         return $this->render('membre/details-compte.html.twig',[
             'bodyId'=>$app->getBodyId('DETAILS_MEMBRE'),
             'userInfo' => $this->user,
-            'cartCount' => $this->cartCount,
         ]);
     }
 
@@ -69,7 +68,6 @@ class MembreController extends AbstractController
             'modifierForm' => $form->createView(),
             'bodyId' => $app->getBodyId('REGISTRATION'),
             'userInfo' => $this->user,
-            'cartCount' => $this->cartCount,
         ]);
 
     }
@@ -85,5 +83,24 @@ class MembreController extends AbstractController
         };
 
         return $this->redirectToRoute('app_home');
+    }
+
+    public function mesCommandes(Helpers $app, ManagerRegistry $doctrine): Response {
+        
+        $user = $this->getUser();
+
+        // Gérer le cas où l'utilisateur n'est pas connecté
+        if(!$user){
+            return $this->redirectToRoute('app_login');
+        }
+
+         // Récupérer les commandes de l'utilisateur
+        $commandes = $doctrine->getManager()->getRepository(Order::class)->findBy(['user' => $user], ['createdAt' => 'DESC']);
+
+        return $this->render('membre/mes-commandes.html.twig', [
+            'commandes' => $commandes,
+            'bodyId' => $app->getBodyId('MES_COMMANDES'),
+            'userInfo' => $this->user,         
+        ]);
     }
 }

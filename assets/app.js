@@ -12,7 +12,6 @@ import './styles/home.css';
 import './styles/age-verify.css';
 import './styles/champagne.css';
 import './styles/monCompte.css';
-import './styles/panier.css';
 import './styles/carousel.css'
 
 

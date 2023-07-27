@@ -3,26 +3,29 @@
    width: 40%;
 }
 
+.home {
+    margin-top: 8rem;
+}
+
 .accueil {
     color: #000000;
     margin-top: 1rem;
     line-height: 2.5rem;
-    font-size: 1.4rem
+    font-size: 1.3rem
 }
 
 .titleHome {
     text-align: center;
-    color: goldenrod;
-    
+    color: goldenrod; 
 }
 
-.backHome {
+/* .backHome {
     display: flex;
     justify-content: space-between;
     gap: 3rem;
     margin-top: 1rem;
     padding: 1rem;
-}
+} */
 
 
 @media screen and (max-width: 1024px) {

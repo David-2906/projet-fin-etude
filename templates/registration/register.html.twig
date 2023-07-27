@@ -8,9 +8,9 @@
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 	{% endfor %}
 
-	<h1 class="mb-3 liNav">Inscription</h1>
-	<p class="Contact">(*) Champs obligatioire</p>
+	<h1 class="mb-3 liNav text-center">Inscription</h1>	
 	<div class="container text-dark w-50">
+	<p class="text-danger">(*) Champs obligatioire</p>
 		<div class="row">
 				{{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
 				{{ form_row(registrationForm.email) }}
@@ -26,7 +26,7 @@
 				{{ form_row(registrationForm.codePostal) }}
 				{{ form_row(registrationForm.agreeTerms) }}
 
-				<button type="submit" class="btn btn-primary">Valider</button>
+				<button type="submit" class="btn btn-outline-success">Valider</button>
 				{{ form_end(registrationForm) }}
 		</div>
 	</div>

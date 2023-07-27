@@ -3,7 +3,7 @@
 {% block title %}Creation de la commande{% endblock %}
 
 {% block body %}
-    <div class="d-none d-lg-block bg-secondary top-0 start-0 h-100" ></div>
+    {# <div class="d-none d-lg-block bg-secondary top-0 start-0 h-100" ></div>
     <div class="container position relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2">
         <div class="row">
             <div class="col-lg-12">
@@ -24,7 +24,6 @@
                     <span class="text-decoration-underline ms-1">Votre adresse de livraison :</span>
                 </h3>
 
-                     {# {{ form_row(form.adresse)|replace({'[-br]' : '<br/>'})|raw }}  #}
 
                 {{ app.user.adresse }}
                 {{ app.user.codePostal }}
@@ -40,7 +39,7 @@
                 {% for product in recapPanier %}
                     {% set total = total + (product.produit.prix * product.quantity) %}
                     <div class="d-sm-flex align-items-center border-top py-4">
-                        <img src="{{ vich_uploader_asset(product.produit, 'imageFile') }}" width="80" height="80" alt="">
+                        <img src="{{ vich_uploader_asset(product.produit, 'imageFile') }}" class="productImage" alt="">
                         <div class="w-100 pt-1 ps-sm-4">
                             <div class="d-block">
                                 <div class="me-3" style="position: relative; top: 1px">
@@ -57,10 +56,71 @@
                     <p><span>Sous Total : {{ (total)|number_format(2, ',','.') }} €</span></p>
                 </div>
                 <div class="mt-5 text-center">
-                    <button class="btn btn-lg btn-warning" type="submit" style="border-radius: 6px; top: 20px">Valider votre commande</button>
+                    <button class="btn btn-outline-success" type="submit" >Valider votre commande</button>
+                    <a href="{{ path('app_mon_panier')}}" class="btn btn-outline-danger">Revenir sur mon panier</a>
                 </div>
             </div>
         </div>
                 {{ form_end(form) }}
+    </div> #}
+
+    <div class="d-none d-lg-block bg-secondary top-0 start-0 h-100"></div>
+<div class="container position relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2">
+    <div class="row">
+        <div class="col-lg-8"> <!-- Modifier la taille des colonnes pour occuper 8/12 (2/3) de l'espace sur les grands écrans -->
+            <nav aria-label="breadcrumb">
+                <ol class="mt-5 pt-lg-3 pb-md-1 pb-lg-3 breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('app_home')}}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('app_champagne')}}">Nos champagnes</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Création de la commande</li>
+                </ol>
+            </nav>
+            {{ form_start(form, {action:path('app_preparation_commande')}) }}
+            <h1 class="h2 pb-2">Création de la commande</h1>
+            <h3 class="fs-base fw-normal text-body  text-uppercase pb-1 pb-sm-1">1.
+                <span class="text-decoration-underline ms-1">Livraison</span>
+            </h3>
+
+            <h3 class="fs-base fw-normal text-body  pb-1 pb-sm-1">2.
+                <span class="text-decoration-underline ms-1">Votre adresse de livraison :</span>
+            </h3>
+
+            {{ app.user.adresse }}
+            {{ app.user.codePostal }}
+            {{ app.user.ville }}
+            <h3 class="fs-base fw-normal text-body pb-1 pb-sm-1  ">3.
+                <span class="text-decoration-underlinems-1">Choisissez votre mode de livraison</span>
+            </h3>
+            {{ form_row(form.transporteur)|replace({'[-br]' : '<br/>'})|raw }}
+        </div>
+        <div class="col-lg-4 pt-1"> <!-- Modifier la taille des colonnes pour occuper 4/12 (1/3) de l'espace sur les grands écrans -->
+            <h2 class="pb-2 pt-md-2 my-4 mt-lg-5 text-center">Récapitulatif du Panier</h2>
+            {% set total = null %}
+            {% for product in recapPanier %}
+                {% set total = total + (product.produit.prix * product.quantity) %}
+                <div class="d-sm-flex align-items-center border-top py-4 text-center">
+                    <img src="{{ vich_uploader_asset(product.produit, 'imageFile') }}" class="productImage mx-auto" alt=""> <!-- Centrer l'image -->
+                    <div class="w-100 pt-1 ps-sm-4">
+                        <div class="d-block text-center text-sm-start"> <!-- Centrer le contenu sur les écrans mobiles, aligner à gauche sur les écrans plus larges -->
+                            <div class="me-3" style="position: relative; top: 1px">
+                                <p>{{ product.produit.designation}}</p>
+                            </div>
+                            <div>
+                                <p class="mb-2"> Quantité: {{ product.quantity}} - Prix du produit: {{product.produit.prix|number_format(2, ',','.') }} €</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="d-flex align-items-center justify-content-between border-top fs-xl pt-4 mb-4">
+                <p><span>Sous Total : {{ (total)|number_format(2, ',','.') }} €</span></p>
+            </div>
+            <div class="mt-5 text-center text-sm-start"> <!-- Centrer le bouton sur les écrans mobiles, aligner à gauche sur les écrans plus larges -->
+                <button class="btn btn-outline-success" type="submit">Valider votre commande</button>
+                <a href="{{ path('app_mon_panier')}}" class="btn btn-outline-danger">Revenir sur mon panier</a>
+            </div>
+        </div>
     </div>
+    {{ form_end(form) }}
+</div>
 {% endblock %}

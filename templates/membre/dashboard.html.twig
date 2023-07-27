@@ -4,21 +4,18 @@
 
 {% block body %}
 
-    <h1 class="text-center text-dark">Bonjour {{ app.user.prenom }} {{ app.user.nom }}! ✅</h1>
-
+    <h1 class="text-center liNav mt-4">Bonjour {{ app.user.prenom }} {{ app.user.nom }} ! ✅</h1>
      
-    <h2 class="text-dark">Mon compte </h2> 
+    <h2 class="compteClient mt-4">Mon compte</h2> 
 
-    <section id="profilUser" class="text-dark">
+    <section id="profilUser" class="mb-5">
         <div class="afficheUser">
-            <p>Mes infos</p>
-            <button><a href='{{ path('app_details_membre')}}'>Afficher mes infos</a></button>
+            <a class="fw-bold" href='{{ path('app_details_membre')}}'>Afficher mes infos</a>
         </div>
-{# 
+
         <div class="afficheCommande">
-            <p>Mon historique de commande</p>
-            <button>Afficher</button>
-        </div> #}
+            <a class="fw-bold" href="{{ path('app_mes_commandes')}}">Afficher mes commandes</a>
+        </div>
     </section>
      
 

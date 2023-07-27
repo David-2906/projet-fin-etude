@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="d-none d-lg-block">
+{# <div class="d-none d-lg-block">
 <div class="container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2">
     <div class="row">
         <div class="col-lg-6">
@@ -45,7 +45,7 @@
             {% for product in recapPanier %}
                 
                     <div class="d-sm-flex align-items-center border-top py-4">
-                        <img src="{{ vich_uploader_asset(product.produit, 'imageFile') }}" width="80" height="80" alt="">
+                        <img src="{{ vich_uploader_asset(product.produit, 'imageFile') }}" class="productImage" alt="">
                         <div class="w-100 pt-1 ps-sm-4">
                             <div class="d-block">
                                 <div class="me-3" style="position: relative; top: 1px">
@@ -74,11 +74,85 @@
           
                 
           
-                <a href="{{ path('app_stripe', {'reference': reference}) }}" class="buttonMdp">Payer</a>
+                <a href="{{ path('app_stripe', {'reference': reference}) }}" class="btn btn-outline-success">Payer</a>
             
             
         </div>
     </div>
 </div>
+</div> #}
+
+
+<div class="container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2">
+    <div class="row">
+        <div class="col-lg-6">
+            <nav aria-label="breadcrumb">
+                <ol class="mt-5 pt-lg-3 pb-md-1 pb-lg-3 breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('app_home')}}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('app_champagne')}}">Nos champagnes</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Verification de la commande</li>
+                </ol>
+            </nav>
+            <h1 class="pb-2 text-center">Verifier la commande</h1>
+            <h3 class="fs-base fw-normal text-body text-uppercase pb-1 pb-sm-1">1.
+                <span class="text-decoration-underline ms-1">Les details de la livraison</span>
+            </h3>
+            <div class="form-check mb-4">
+                <input type="radio" class="form-check-input" name="shipping" checked>
+                <label class="form-check-label d-flex justify-content-between"><span>
+                    <span class="d-block fs-base text-dark fw-medium mb-1">{{transporteur.title}}</span>
+                    <span class="text-body">{{transporteur.content}}</span></span>
+                    <span class="fs-base text-dark fw-semibold"> {{transporteur.price|number_format(2, ',',',')}} €</span>              
+                </label>
+            </div>
+            <h3 class="fs-base fw-normal text-body text-uppercase pb-2 pb-sm-3">2.
+                <span class="text-decoration-underline ms-1">Adresse de livraison</span>
+            </h3>
+            <div class="form-check mb-4">
+                <input type="radio" class="form-check-input" checked>
+                <label class="form-check-label d-flex justify-content-between">
+                    <span class="d-block fs-base text-dark fw-medium mb-1">{{app.user.adresse}}</span>
+                    <span class="d-block fs-base text-dark fw-medium mb-1">{{app.user.codePostal}}</span>
+                    <span class="d-block fs-base text-dark fw-medium mb-1">{{app.user.ville}}</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="col-lg-5 offset-lg-1 pt-1">
+            <h2 class="pb-2 pt-md-2 my-4 mt-lg-5 text-center">Récapitulatif de la commande</h2>
+            {% set total = null %}
+            {% for product in recapPanier %}
+                <div class="d-sm-flex align-items-center justify-content-center justify-content-sm-start border-top py-4">
+                    <div class="text-center text-sm-start">
+                        <img src="{{ vich_uploader_asset(product.produit, 'imageFile') }}" class="productImage" alt="">
+                    </div>
+                    <div class="w-100 pt-1 ps-sm-4 text-center text-sm-start">
+                        <div class="d-block">
+                            <div class="me-3" style="position: relative; top: 1px">
+                                <p>{{ product.produit.designation}}</p>
+                            </div>
+                            <div>
+                                <p class="mb-2"> Quantité: {{ product.quantity}} - Prix du produit: {{product.produit.prix|number_format(2, ',','.') }} €</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% set total = total + (product.produit.prix * product.quantity) %}
+            {% endfor %}
+
+            <ul class="list-unstyled py-3 mb-0">
+                <li class="d-flex justify-content-between mb-2">Sout-total: 
+                    <span class="fw-semibold ms-2">{{ (total)|number_format(2, ',','.') }} €</span>
+                </li>
+                <li class="d-flex justify-content-between mb-2"> Frais de port:
+                    <span class="fw-semibold ms-2">{{transporteur.price|number_format(2, ',',',')}} €</span>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center justify-content-between border-top fs-xl pt-4">Total: 
+                <span class="fs-3 fw-semibold text-dark ms-2">{{ (total + (transporteur.price))|number_format(2, ',','.')}} €</span>
+            </div>
+            <a href="{{ path('app_stripe', {'reference': reference}) }}" class="btn btn-outline-success">Payer</a>
+        </div>
+    </div>
 </div>
 {% endblock %}

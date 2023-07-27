@@ -101,6 +101,23 @@ main {
 	background-color: goldenrod !important;
 }
 
+.panier {
+	margin-top: 10rem;
+	margin-bottom: 10rem;
+}
+
+.imgAbout {
+	max-width: 100%;
+}
+.aboutImg {
+	width: 50%;
+}
+
+.box-image{
+	display: flex;
+	justify-content: center;
+	column-gap: 0.3rem;
+}
 @media screen and (max-width: 768px) {
 	.titleNav {
 		display:none;

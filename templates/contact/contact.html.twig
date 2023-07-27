@@ -3,13 +3,13 @@
 {% block title %}Nous contacter{% endblock %}
 
 {% block body %}
-    <div class="container text-dark">
+    <div class="container">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
                 {{message}}
             </div>
         {% endfor %}
-        <h1 class="text-center">Formulaire de contact</h1>
+        <h1 class="text-center liNav">Formulaire de contact</h1>
         <p class="text-danger">(*) Champs obligatoire</p>
         {{ form(form)}}
     </div> 

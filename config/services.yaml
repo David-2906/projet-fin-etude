@@ -25,6 +25,7 @@ parameters:
     REGISTRATION: "register"
     MEMBER_DASHBOARD: "membre"
     DETAILS_MEMBRE: "detailsMembre"
+    MES_COMMANDES: "mesCommandes"
     ORDER_CONFIRMATION: "orderConfirmation"
     RESET_PASSWORD: "resetPassword"
     CONTACT: "contact"
