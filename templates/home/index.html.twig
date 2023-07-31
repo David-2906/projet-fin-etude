@@ -2,6 +2,11 @@
 
 {% block title %}Page Accueil{% endblock %}
 
+{% block meta %}
+        <meta name="description" content="Découvrez notre sélection exquise de champagnes artisanaux, élaborés avec passion et tradition. Achetez en ligne les meilleures cuvées de champagne, directement du vignoble à votre verre. Élevez vos célébrations et vos moments spéciaux avec le goût incomparable du champagne. Livraison rapide et sécurisée dans toute la France.">
+        <meta name="author" content="David Pires"> 
+{% endblock %}
+
 {% block body %}
 
     {# <div {{stimulus_controller("say-hello")}}>
@@ -12,10 +17,10 @@
     <div {{stimulus_target("say-hello", "output")}}></div>
     </div> #}
     <div class="home">
-    <h2 class="titleHome">Bienvenue sur Le domaine du roi {{ userInfo.isLoggedIn ? app.user.prenom : "" }} ! </h2>
+    <h1 class="titleHome">Bienvenue sur Le Domaine du Roi {{ userInfo.isLoggedIn ? app.user.prenom : "" }} ! </h1>
     <section class="mt-5 container">
             {% for message in app.flashes('success') %}
-            <div class="alert alert-success mt-4">
+            <div class="alert alert-success mt-4 text-center">
                 {{message}}
             </div>
             {% endfor %}
@@ -36,7 +41,7 @@
             </p>
     </div>
 </section>
-</div>
+
 <div id="carousel">
   <figure class="spinner" id='spinner'>
   <img src="{{ asset('assets/img/Fichier_72x.png') }}" alt="" >
@@ -45,12 +50,14 @@
      <img src="{{ asset('assets/img/jennifer-yung-unsplash.jpg') }}" alt="" >
       <img src="{{ asset('assets/img/anthony-delanoix-vmrCxMRdq58-unsplash.jpg') }}" alt="" >
     <img src="{{ asset('assets/img/vineyard-gf50cc1449_640.jpg') }}" alt="" >  
-     <img src="{{ asset('assets/img/pexels-oleksandr-pidvalnyi-3036525.jpg') }}" alt="" >
+     <img src="{{ asset('assets/img/wines-g0818daf54_640.jpg') }}" alt="" >
      <img src="{{ asset('assets/img/grapes-g3981861c3_640.jpg') }}" alt="" >
   </figure>
 </div>
 <span style="float:left" class="ss-icon" onclick="galleryspin('-')">&lt;</span>
 <span style="float:right" class="ss-icon" onclick="galleryspin('+')">&gt;</span>
+
+</div>
 
 <script>
 var angle = 0;

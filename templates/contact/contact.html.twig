@@ -2,10 +2,15 @@
 
 {% block title %}Nous contacter{% endblock %}
 
+{% block meta %}
+    <meta name="description" content="N'hésitez pas à nous contacter pour toute question ou demande concernant nos champagnes artisanaux ! Notre équipe dédiée est là pour vous aider et répondre à vos besoins. Utilisez notre formulaire de contact pour nous envoyer un message, et nous vous recontacterons rapidement. Faites-nous part de vos commentaires, suggestions ou préoccupations afin de vous offrir une expérience client exceptionnelle. Célébrez chaque instant avec nos bulles exquises et comptez sur notre service client attentionné pour vous accompagner dans votre choix de champagne.">
+    <meta name="author" content="David Pires">
+{% endblock %}
+
 {% block body %}
-    <div class="container">
+    <div class="container home">
         {% for message in app.flashes('success') %}
-            <div class="alert alert-success mt-4">
+            <div class="alert alert-success mt-4 text-center">
                 {{message}}
             </div>
         {% endfor %}

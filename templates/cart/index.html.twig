@@ -2,14 +2,24 @@
 
 {% block title %}Mon Panier{% endblock %}
 
+{% block meta %}
+  <meta name="description" content="Explorez votre panier de champagne personnalisé ! Ajoutez vos cuvées préférées et gérez facilement les quantités avant de passer à l'achat. Profitez d'une expérience de magasinage fluide et sécurisée. Célébrez vos moments spéciaux avec les meilleurs champagnes sélectionnés pour vous.">
+  <meta name="author" content="David Pires">
+{% endblock %}
+
 {% block body %}
 
 
-<div class="container panier">
+<div class="container home">
   <div class="row justify-content-center">
     <div class="col-lg-10">
       <div class="mb-5">
         <h1 class="text-center liNav mb-4">Mon Panier 🛒</h1>
+                {% for message in app.flashes('error') %}
+            <div class="alert alert-danger mt-4 text-center">
+                {{message}}
+            </div>
+        {% endfor %}
         {% if cart|length > 0 %}
           <form action="{{ path('app_commande')}}" class="mb-5">
             {% set total = null %}
@@ -45,11 +55,10 @@
           </form>
         {% else %}
           <h3 class="text-center">VOTRE PANIER EST VIDE !</h3>
+          <p class="text-center"><a href="{{ path('app_champagne')}}">Jeter un oeil à nos champagne !</a></p>
         {% endif %}
       </div>
     </div>
   </div>
 </div>
-
-
 		{% endblock %}

@@ -4,10 +4,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenue !{% endblock %}</title>
 
 
         {% block meta %}
+
         {# Bloc destiné à recevoir les metas OG de construction de posts pour les réseaux sociaux et les metas twitter #}
         {% endblock %}
 
@@ -31,11 +32,17 @@
 
 
     </head>
-    <body id = "{{ bodyId }}">
+    {% block bodyId %}
+        <body id = "{{ bodyId }}">
+    {% endblock %}
+    
 
         <header>
         {% block header %}
-        {% include './template-parts/nav.html.twig' %}
+        {% block navBar %}
+             {% include './template-parts/nav.html.twig' %}
+        {% endblock %}
+       
         {% include './template-parts/age-verify.html.twig' %}
         {% endblock %}
         </header>

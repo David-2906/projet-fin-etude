@@ -2,18 +2,27 @@
 
 {% block title %}Admin | Transporter Management {% endblock %}
 
+{% block meta %}
+
+	<meta name="description" content="Ajoutez facilement de nouveaux transporteurs à notre base de données en tant que super-administrateur ! Gérez les informations des transporteurs, y compris les options de tarification. Offrez une expérience de livraison fluide et fiable à nos clients, tout en maintenant un contrôle total sur les options d'expédition.">
+
+	<meta name="author" content="David Pires"> 
+	
+{% endblock %}
+
 {% block body %}
-<h1 class="mb-3 liNav text-center">Insertion Transporteur</h1>
-	<div class="container mb-5">
+<div class="home">
+<h1 class="mb-5 liNav text-center">Insertion Transporteur</h1>
+	<div class="container w-50 mt-4 mb-5">
 		<div class="row liNav">
 				{{ form_start(TransporterForm) }}
 				{{ form_row(TransporterForm.title) }}
                 {{ form_row(TransporterForm.content) }}
                 {{ form_row(TransporterForm.price) }}
 
-				<button type="submit" class="btn btn-outline-success mb-5">Valider</button>
+				<button type="submit" class="btn btn-outline-success mb-5 mt-4">Valider</button>
 				{{ form_end(TransporterForm) }}
 		</div>
 	</div>
-
+</div>
 {% endblock %}

@@ -25,22 +25,22 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-            'label' => 'Adresse Email (*)',
+            'label' => 'Adresse Email *',
             'attr' => [
                 'placeholder' => 'adresse@',
                 
             ],
         ])
             ->add('nom', TextType::class,[
-                'label' => 'Nom (*)',
+                'label' => 'Nom *',
 
             ])
             ->add('prenom', TextType::class,[
-                'label' => 'Prenom (*)',
+                'label' => 'Prenom *',
 
             ])
             ->add('dateNaissance', DateType::class,[
-                'label' => 'Date de Naissance (*)',
+                'label' => 'Date de Naissance *',
                 'years' => range(date('Y') - 100, date('Y') + 0),
                 'format' => 'dd-MM-yyyy',
                 'constraints' => [ 
@@ -52,16 +52,16 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('adresse', TextType::class,[
-                'label' => 'Adresse (*)'
+                'label' => 'Adresse *'
             ])
             ->add('complementAdresse', TextType::class,[
                 'label' => 'Complement d\'adresse'
             ])
             ->add('ville', TextType::class,[
-                'label' => 'Ville (*)'
+                'label' => 'Ville *'
             ])
             ->add('codePostal', TextType::class, [
-                'label' => 'Code Postal (*)'
+                'label' => 'Code Postal *'
             ])
             
             

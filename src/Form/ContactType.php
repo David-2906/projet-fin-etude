@@ -20,19 +20,19 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Nom (*)',
+                'label' => 'Nom *',
             ])
             ->add('prenom', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Prenom (*)',
+                'label' => 'Prenom *',
             ])
             ->add('email', EmailType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Adresse email (*)',
+                'label' => 'Adresse email *',
                 'label_attr' => [
                     'class' => 'form-label'
                 ],
@@ -47,11 +47,11 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Message (*)'
+                'label' => 'Message *'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-warning my-4'
+                    'class' => 'btn btn-outline-success my-4'
                 ],
                 'label' => 'Envoyer le message'
             ])

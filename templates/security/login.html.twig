@@ -2,6 +2,12 @@
 
 {% block title %}Connectez-vous{% endblock %}
 
+{% block meta %}
+    <meta name="description" content="Connectez-vous facilement à votre compte pour accéder à notre collection de champagnes artisanaux ! Sur cette page de connexion, saisissez vos identifiants pour accéder à votre profil personnel. Profitez d'un processus de connexion fluide et sécurisé, conçu pour vous offrir une expérience utilisateur sans tracas. Célébrez chaque instant avec les meilleurs champagnes, en étant connecté à votre compte pour une expérience d'achat personnalisée et transparente.">
+
+    <meta name="author" content="David Pires">
+{% endblock %}
+
 {% block body %}
 <div class="container">
 <form method="post">
@@ -30,7 +36,7 @@
         {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html #}
 
-        <div class="checkbox mb-3">
+        <div class="checkbox mb-3 mt-3">
             <label>
                 <input type="checkbox" name="_remember_me"> Se souvenir de moi
             </label>

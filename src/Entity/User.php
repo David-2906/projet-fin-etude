@@ -56,11 +56,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: false)]
     private $date_enregistrement = null;
 
-    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?Panier $panier = null;
+    // #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    // private ?Panier $panier = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class, orphanRemoval: true)]
-    private Collection $commande;
+    // #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class, orphanRemoval: true)]
+    // private Collection $commande;
 
     #[ORM\OneToMany(targetEntity: ResetPasswordRequest::class, mappedBy: 'user', cascade: ['persist', 'remove'])]
     private $resetpassword;
@@ -68,12 +68,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class, cascade: ['persist', 'remove'])]
     private Collection $orders;
 
     public function __construct()
     {
-        $this->commande = new ArrayCollection();
+        // $this->commande = new ArrayCollection();
         $this->orders = new ArrayCollection();
     }
 
@@ -251,57 +251,57 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
+    // public function getPanier(): ?Panier
+    // {
+    //     return $this->panier;
+    // }
 
-    public function setPanier(?Panier $panier): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($panier === null && $this->panier !== null) {
-            $this->panier->setUser(null);
-        }
+    // public function setPanier(?Panier $panier): self
+    // {
+    //     // unset the owning side of the relation if necessary
+    //     if ($panier === null && $this->panier !== null) {
+    //         $this->panier->setUser(null);
+    //     }
 
-        // set the owning side of the relation if necessary
-        if ($panier !== null && $panier->getUser() !== $this) {
-            $panier->setUser($this);
-        }
+    //     // set the owning side of the relation if necessary
+    //     if ($panier !== null && $panier->getUser() !== $this) {
+    //         $panier->setUser($this);
+    //     }
 
-        $this->panier = $panier;
+    //     $this->panier = $panier;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    /**
-     * @return Collection<int, Commande>
-     */
-    public function getCommande(): Collection
-    {
-        return $this->commande;
-    }
+    // /**
+    //  * @return Collection<int, Commande>
+    //  */
+    // public function getCommande(): Collection
+    // {
+    //     return $this->commande;
+    // }
 
-    public function addCommande(Commande $commande): self
-    {
-        if (!$this->commande->contains($commande)) {
-            $this->commande->add($commande);
-            $commande->setUser($this);
-        }
+    // public function addCommande(Commande $commande): self
+    // {
+    //     if (!$this->commande->contains($commande)) {
+    //         $this->commande->add($commande);
+    //         $commande->setUser($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeCommande(Commande $commande): self
-    {
-        if ($this->commande->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getUser() === $this) {
-                $commande->setUser(null);
-            }
-        }
+    // public function removeCommande(Commande $commande): self
+    // {
+    //     if ($this->commande->removeElement($commande)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($commande->getUser() === $this) {
+    //             $commande->setUser(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function isVerified(): bool
     {

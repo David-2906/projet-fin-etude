@@ -36,7 +36,7 @@ class Order
     #[ORM\Column(length: 255)]
     private ?string $reference = null;
 
-    #[ORM\OneToMany(mappedBy: 'orderProduct', targetEntity: OrderDetails::class)]
+    #[ORM\OneToMany(mappedBy: 'orderProduct', targetEntity: OrderDetails::class, cascade: ['persist', 'remove'])]
     private Collection $orderDetails;
 
     public function __construct()

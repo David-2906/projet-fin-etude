@@ -8,19 +8,20 @@
 
 {% block body %}
 
-  <div>
+  <div class="home mb-5">
 
-    <div class="mt-5 p-5 border border-primary d-flex flex-column justify-content-center align-items-center text-dark">
+    <div class="mt-5 p-5 d-flex flex-column justify-content-center align-items-center text-dark">
 
-      <h3>Votre commande est complete!!</h3>
+      <h3>Votre commande n°{{order.reference}} à bien été payée et enregistrée !</h3>
 
       <h5>Merci de votre confiance.</h5>
 
+      <p>Vous pouvez retrouver un exemplaire de votre facture dans votre espace personnel.</p>
       {# <h5>montant régle:
 
         {{ orderTotal }}€</h5> #}
 
-      <a class="btn btn-outline-primary mt-3" href="{{ path('app_champagne') }}">Retour à la boutique</a>
+      <a class="btn btn-outline-success mt-3 mb-4" href="{{ path('app_champagne') }}">Retour à la boutique</a>
 
     </div>
 

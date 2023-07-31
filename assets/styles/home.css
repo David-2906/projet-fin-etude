@@ -4,12 +4,13 @@
 }
 
 .home {
-    margin-top: 8rem;
+    margin-top: 10rem;
+    margin-bottom: 13rem;
 }
 
 .accueil {
     color: #000000;
-    margin-top: 1rem;
+
     line-height: 2.5rem;
     font-size: 1.3rem
 }

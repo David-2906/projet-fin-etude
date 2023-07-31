@@ -2,10 +2,18 @@
 
 {% block title %}Modification de mes informations {% endblock %}
 
-{% block body %}
+{% block meta %}
+	
+	<meta name="description" content="Mettez à jour facilement vos informations personnelles avec notre formulaire de modification de compte ! Sur cette page, vous avez le contrôle total sur votre profil. Modifiez en toute simplicité vos informations pour une expérience personnalisée avec nos champagnes artisanaux. Profitez d'un processus de mise à jour transparent et sécurisé. Célébrez chaque instant avec les meilleurs champagnes, tout en ayant le pouvoir de personnaliser votre compte selon vos préférences.">
 
-<h1>Modifier mon profil</h1>
-	<div class="container text-dark">
+	<meta name="author" content="David Pires">
+
+{% endblock %}
+
+{% block body %}
+<div class="home">
+<h1 class="mb-3 liNav text-center">Modifier mon profil</h1>
+	<div class="container liNav">
 		<div class="row">
 				{{ form_start(modifierForm) }}
 				{{ form_row(modifierForm.email) }}
@@ -17,9 +25,10 @@
                 {{ form_row(modifierForm.ville) }}
                 {{ form_row(modifierForm.code_postal) }}
 
-				<button type="submit" class="btn btn-primary">Valider</button>
+				<button type="submit" class="btn btn-outline-success mb-4">Valider</button>
 				{{ form_end(modifierForm) }}
 		</div>
 	</div>
+</div>
 
 {% endblock %}

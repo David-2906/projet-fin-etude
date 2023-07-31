@@ -84,10 +84,12 @@ class CommandeController extends AbstractController
             $order->setCreatedAt($datetime);
             $order->setTransporterName($transporter->getTitle());
             $order->setTransporterPrice($transporter->getPrice());
-            $order->setIsPaid(1);
+            $order->setIsPaid(0);
 
             $this->em->persist($order);
             
+            $hasStockErrors = false;
+            $stockErrors = [];
 
             foreach($cartService->getTotal() as $produit){
 
@@ -103,9 +105,42 @@ class CommandeController extends AbstractController
 
                 $product = $produit['produit'];
                 $quantiteCommandee = $produit['quantity'];
+
+                if ($quantiteCommandee > $product->getStock()) {
+                    // Si la quantité commandée dépasse le stock disponible, mettez à jour la variable d'erreur et stockez les informations sur le produit
+                    $hasStockErrors = true;
+                    $stockErrors[] = [
+                        'produit' => $product->getDesignation(), // Stockez le nom du produit avec une quantité commandée supérieure au stock
+                        'stock_disponible' => $product->getStock(), // Stockez la quantité de stock disponible pour le produit
+                        'quantite_commandee' => $quantiteCommandee, // Stockez la quantité commandée pour le produit
+                    ];  
+                    // Passez à l'élément suivant dans la boucle 
+                        continue;
+                } else { // Mettre à jour le stock comme prévu
                 $nouveauStock = $product->getStock() - $quantiteCommandee;
                 $product->setStock($nouveauStock);
                 $this->em->persist($product);
+                }
+            }
+            
+            if ($hasStockErrors) {
+                // S'il y a des erreurs, affichez un message d'erreur à l'utilisateur en incluant les informations sur les produits avec un stock insuffisant
+                foreach ($stockErrors as $stockError) {
+                    // Générez un message d'erreur spécifique pour chaque produit dont la quantité commandée dépasse le stock disponible en utilisant la fonction sprintf pour formater le message.
+                    $message = sprintf(
+                        'La quantité commandée pour le produit "%s" dépasse le stock disponible. Stock disponible : %d, Quantité commandée : %d',
+                        // %s : Cette séquence de format est utilisée pour afficher des chaînes de caractères. Lorsque vous utilisez %s, la valeur fournie doit être une chaîne de caractères.
+                        // %d : Cette séquence de format est utilisée pour afficher des entiers décimaux (valeurs numériques entières). Lorsque vous utilisez %d, la valeur fournie doit être un entier.
+                        $stockError['produit'], // Utilisez le nom du produit à partir du tableau $stockErrors
+                        $stockError['stock_disponible'], // Utilisez la quantité de stock disponible à partir du tableau $stockErrors
+                        $stockError['quantite_commandee'] // Utilisez la quantité commandée à partir du tableau $stockErrors
+                    );
+                    
+                    $this->addFlash('error', $message);
+                }
+                
+                // Vous pouvez également rediriger l'utilisateur vers une page de retour au panier pour qu'il puisse corriger sa commande.
+                return $this->redirectToRoute('app_mon_panier');
             }
 
             $this->em->flush();

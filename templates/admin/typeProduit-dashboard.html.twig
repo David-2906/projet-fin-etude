@@ -1,18 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Admin |Cepage Management {% endblock %}
+{% block title %}Admin | Type de produit Management {% endblock %}
+
+{% block meta %}
+	<meta name="description" content="Enrichissez notre collection de champagnes en ajoutant de nouveaux type de produit ! Gérez facilement les informations du type de champagne en incluant les noms et contribuez ainsi à la diversité de nos vins artisanaux, élaborés avec passion et tradition.">
+	<meta name="author" content="David Pires">
+{% endblock %}
 
 {% block body %}
-
-<h1 class="mb-3 liNav text-center">Insertion type de produit</h1>
-	<div class="container text-dark mb-5">
+<div class="home">
+<h1 class="mb-5 liNav text-center">Insertion type de produit</h1>
+	<div class="container w-50 mt-4 mb-5">
 		<div class="row liNav">
 				{{ form_start(TypeProduitForm) }}
 				{{ form_row(TypeProduitForm.name) }}
 
-				<button type="submit" class="btn btn-outline-success mb-5">Valider</button>
+				<button type="submit" class="btn btn-outline-success mb-5 mt-4">Valider</button>
 				{{ form_end(TypeProduitForm) }}
 		</div>
 	</div>
-
+</div>
 {% endblock %}

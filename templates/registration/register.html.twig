@@ -3,6 +3,14 @@
 {% block title %}Inscrivez-Vous
 {% endblock %}
 
+{% block meta %}
+
+	<meta name="description" content="Rejoignez notre communauté de passionnés de champagne en vous inscrivant dès maintenant ! Sur cette page d'inscription, créez votre compte utilisateur en quelques étapes simples. Profitez d'un accès privilégié à notre collection de champagnes artisanaux. Bénéficiez d'une expérience d'inscription fluide et sécurisée, et célébrez chaque instant avec les meilleurs champagnes, spécialement sélectionnés pour vous. Notre équipe dédiée est là pour vous accompagner tout au long du processus d'inscription, répondant à vos questions et vous souhaitant la bienvenue dans notre univers de bulles exquises.">
+
+	<meta name="author" content="David Pires">
+	
+{% endblock %}
+
 {% block body %}
 	{% for flash_error in app.flashes('verify_email_error') %}
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
@@ -26,7 +34,7 @@
 				{{ form_row(registrationForm.codePostal) }}
 				{{ form_row(registrationForm.agreeTerms) }}
 
-				<button type="submit" class="btn btn-outline-success">Valider</button>
+				<button type="submit" class="btn btn-outline-success mb-5">Valider</button>
 				{{ form_end(registrationForm) }}
 		</div>
 	</div>

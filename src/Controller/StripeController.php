@@ -114,13 +114,20 @@ class StripeController extends AbstractController
 
     }
 
-    public function stripeSuccess($reference, CartService $Service, SessionInterface $session): Response {
+    public function stripeSuccess($reference, SessionInterface $session): Response {
 
         $session->remove('cart');
 
+        $order = $this->em->getRepository(Order::class)->findOneBy(['reference' => $reference]);
+
+        if(!$order->isIsPaid()){
+            $order->setIsPaid(1);
+            $this->em->flush();
+        }
+
         return $this->render('stripe/order_confirmation.html.twig', [
             'bodyId' => $this->bodyId,
-
+            'order' => $order,
             'userInfo' => $this->userInfo,
         ]);
     }

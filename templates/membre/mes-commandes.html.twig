@@ -2,46 +2,19 @@
 
 {% block title %}Mes Commandes{% endblock %}
 
+{% block meta %}
+
+    <meta name="description" content="Explorez votre historique complet de commandes de champagnes artisanaux ! Sur cette page, retrouvez un récapitulatif détaillé de toutes vos commandes passées, y compris les dates d'achat et les informations de livraison. Profitez d'une vue d'ensemble complète de vos achats passés pour mieux planifier vos prochaines dégustations. Célébrez chaque instant avec les meilleurs champagnes, tout en bénéficiant d'un accès facile à votre historique pour une expérience client personnalisée et transparente.">
+
+    <meta name="author" content="David Pires">
+    
+{% endblock %}
+
 {% block body %}
     
-        {# <h1 class="text-center liNav">Mes Commandes</h1>
-    {% if commandes is empty %}
 
-        <p>Vous n'avez pas encore passé de commande sur notre site.</p>
-        <p class="liNav">Jetez un oeil à nos champagne ! <a href="{{path('app_champagne')}}"></p>
-
-    {% else %}
-        <div class="container mb-5">
-            <div class="row">
-                {% for commande in commandes %}
-                    <div class="col-md-6">
-                        <div class="commande">
-                            <h3 class="fw-bold">Commande N° {{ commande.reference }}</h3>
-                            <p><span class="fw-bold">Adresse de livraison :</span> {{ commande.user.adresse }}, {{ commande.user.codePostal }} {{ commande.user.ville }}</p>
-                            <p><span class="fw-bold">Transporteur :</span>  {{ commande.transporterName }}</p>
-                            <p><span class="fw-bold">Prix du transporteur : </span> {{ commande.transporterPrice }} €</p>
-                            <p><span class="fw-bold">Produits :</span> </p>
-                                <ul>
-                                    {% for detail in commande.orderDetails %}
-                                        <li><span class="fw-bold">Désignation:</span> {{ detail.product }} - <span class="fw-bold">Nombre de bouteille:</span> {{ detail.quantity }} - Prix: {{ detail.price }} € </li>
-                                    {% endfor %}
-                                </ul>  
-                            {% set totalPrice = commande.transporterPrice %}
-                                {% for detail in commande.orderDetails %}
-                                   {% set totalPrice = totalPrice + detail.price %}
-                                {% endfor %}
-                                
-                    <p><span class="fw-bold">Prix total :</span> {{ totalPrice }} €</p>                       
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %} #}
-
-
-        <div class="container mb-5">
-        <h1 class="text-center liNav">Mes Commandes</h1>
+        <div class="container home">
+        <h1 class="text-center liNav mb-4">Mes Commandes</h1>
 
         {% if commandes is empty %}
             <p class="text-center mt-4">Vous n'avez pas encore passé de commande sur notre site.</p>
@@ -79,5 +52,8 @@
                 {% endfor %}
             </div>
         {% endif %}
+        <div class="d-flex justify-content-center">
+        <button class="rounded bg-black mb-4 mt-4 w-25"><a href='{{ path('app_membre')}}'>Retour</a></button>
+        </div>
     </div>
 {% endblock %}

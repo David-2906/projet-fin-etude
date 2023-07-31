@@ -2,21 +2,26 @@
 
 {% block title %}Gestion de compte{% endblock %}
 
-{% block body %}
+{% block meta %}
+    <meta name="description" content="Gérez facilement votre compte utilisateur. Sur cette page de gestion de compte, mettez à jour vos informations personnelles et acceder à l'historique de vos commandes. Profitez d'un contrôle total sur votre profil. Célébrez chaque instant avec les meilleurs champagnes, tout en bénéficiant d'un service client attentionné et dévoué.">
+    <meta name="author" content="David Pires">
+{% endblock %}
 
+{% block body %}
+    <div class="container home">
     <h1 class="text-center liNav mt-4">Bonjour {{ app.user.prenom }} {{ app.user.nom }} ! ✅</h1>
      
     <h2 class="compteClient mt-4">Mon compte</h2> 
 
     <section id="profilUser" class="mb-5">
         <div class="afficheUser">
-            <a class="fw-bold" href='{{ path('app_details_membre')}}'>Afficher mes infos</a>
+            <a class="fw-bold" href='{{ path('app_details_membre')}}'>Afficher mes informations</a>
         </div>
 
         <div class="afficheCommande">
             <a class="fw-bold" href="{{ path('app_mes_commandes')}}">Afficher mes commandes</a>
         </div>
     </section>
-     
+     </div>
 
 {% endblock %}

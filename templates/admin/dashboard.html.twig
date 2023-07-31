@@ -2,10 +2,15 @@
 
 {% block title %}Ajout de produit{% endblock %}
 
+{% block meta %}
+	<meta name="description" content="Ajoutez facilement de nouveaux champagnes à notre collection ! Gérez les cuvées, millésimes, cépages et caractéristiques. Enrichissez notre catalogue pour une sélection variée et exquise de champagnes.">
+	<meta name="author" content="David Pires"> 
+{% endblock %}
+
 {% block body %}
 
-<h1 class="mb-3 liNav text-center">Insertion produit</h1>
-	<div class="container liNav mb-5">
+<h1 class="mb-3 liNav text-center home">Insertion produit</h1>
+	<div class="container liNav mb-5 w-50 mt-4">
 		<div class="row">
 				{{ form_start(ProduitForm, {'attr': {'novalidate': 'novalidate'}}) }}
 				{{ form_row(ProduitForm.designation) }}

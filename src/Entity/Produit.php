@@ -47,8 +47,8 @@ class Produit
     #[ORM\Column(type: Types::TEXT)]
     private  $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: PanierProduit::class, orphanRemoval: true)]
-    private Collection $panierProduits;
+    // #[ORM\OneToMany(mappedBy: 'produit', targetEntity: PanierProduit::class, orphanRemoval: true)]
+    // private Collection $panierProduits;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
@@ -58,13 +58,13 @@ class Produit
     #[ORM\JoinColumn(nullable: false)]
     private ?Cepage $cepage = null;
 
-    #[ORM\ManyToMany(targetEntity: Commande::class, inversedBy: 'produits')]
-    private Collection $commande;
+    // #[ORM\ManyToMany(targetEntity: Commande::class, inversedBy: 'produits')]
+    // private Collection $commande;
 
     public function __construct()
     {
-        $this->panierProduits = new ArrayCollection();
-        $this->commande = new ArrayCollection();
+        // $this->panierProduits = new ArrayCollection();
+        // $this->commande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -172,35 +172,35 @@ class Produit
         return $this;
     }
 
-    /**
-     * @return Collection<int, PanierProduit>
-     */
-    public function getPanierProduits(): Collection
-    {
-        return $this->panierProduits;
-    }
+    // /**
+    //  * @return Collection<int, PanierProduit>
+    //  */
+    // public function getPanierProduits(): Collection
+    // {
+    //     return $this->panierProduits;
+    // }
 
-    public function addPanierProduit(PanierProduit $panierProduit): self
-    {
-        if (!$this->panierProduits->contains($panierProduit)) {
-            $this->panierProduits->add($panierProduit);
-            $panierProduit->setProduit($this);
-        }
+    // public function addPanierProduit(PanierProduit $panierProduit): self
+    // {
+    //     if (!$this->panierProduits->contains($panierProduit)) {
+    //         $this->panierProduits->add($panierProduit);
+    //         $panierProduit->setProduit($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removePanierProduit(PanierProduit $panierProduit): self
-    {
-        if ($this->panierProduits->removeElement($panierProduit)) {
-            // set the owning side to null (unless already changed)
-            if ($panierProduit->getProduit() === $this) {
-                $panierProduit->setProduit(null);
-            }
-        }
+    // public function removePanierProduit(PanierProduit $panierProduit): self
+    // {
+    //     if ($this->panierProduits->removeElement($panierProduit)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($panierProduit->getProduit() === $this) {
+    //             $panierProduit->setProduit(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getTypeProduit(): ?TypeProduit
     {
@@ -226,29 +226,29 @@ class Produit
         return $this;
     }
 
-    /**
-     * @return Collection<int, Commande>
-     */
-    public function getCommande(): Collection
-    {
-        return $this->commande;
-    }
+    // /**
+    //  * @return Collection<int, Commande>
+    //  */
+    // public function getCommande(): Collection
+    // {
+    //     return $this->commande;
+    // }
 
-    public function addCommande(Commande $commande): self
-    {
-        if (!$this->commande->contains($commande)) {
-            $this->commande->add($commande);
-        }
+    // public function addCommande(Commande $commande): self
+    // {
+    //     if (!$this->commande->contains($commande)) {
+    //         $this->commande->add($commande);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeCommande(Commande $commande): self
-    {
-        $this->commande->removeElement($commande);
+    // public function removeCommande(Commande $commande): self
+    // {
+    //     $this->commande->removeElement($commande);
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * Get the value of updatedAt

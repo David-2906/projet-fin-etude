@@ -2,10 +2,18 @@
 
 {% block title %}Nos champagnes{% endblock %}
 
-{% block body %}
-    <h1 class="titleChamp">Nos Champagnes</h1>
+{% block meta %}
+    <meta name="description" content="Découvrez notre collection complète de champagnes artisanaux, produits et vendus par le Domaine du Roi ! Parcourez notre catalogue varié, comprenant les meilleures cuvées, les millésimes raffinés et les cépages uniques. Profitez d'une sélection de champagnes élaborés avec passion et tradition, directement du vignoble à votre verre. Célébrez chaque instant avec des bulles exquises et trouvez le champagne parfait pour vos moments spéciaux.">
 
-        <p class="container accueil">Découvrez notre prestigieuse collection de champagnes au Domaine du Roi, une sélection raffinée qui vous fera voyager au cœur de l'art de vivre champenois.
+    <meta name="author" content="David Pires">
+    
+{% endblock %}
+
+{% block body %}
+    <div class="home">
+    <h1 class="titleChamp mb-5">Nos Champagnes</h1>
+
+        <p class="container accueil mb-5">Découvrez notre prestigieuse collection de champagnes au Domaine du Roi, une sélection raffinée qui vous fera voyager au cœur de l'art de vivre champenois.
         <br>
         Parcourez notre gamme variée, en format 75cl ou 1.5L au choix, allant des assemblages équilibrés aux millésimes d'exception, pour trouver le champagne qui enchantera vos papilles lors de moments mémorables et de célébrations inoubliables.
         </p>
@@ -26,17 +34,26 @@
         <p><span class="fw-bold">Millésime:</span> {{champagne.millesime}}</p>
         <p><span class="fw-bold">Format:</span> {{champagne.format}}</p>
         <p><span class="fw-bold">Cépage:</span> {{champagne.cepage}}</p>
+        {% if champagne.stock > 10 %}
+        <p class="fw-bold">Stock: <span class="text-success">Produit disponible</span></p>
+        {% elseif champagne.stock >= 6 and champagne.stock  <= 10 %}    
+        <p class="fw-bold">Stock: <span class="text-warning">Produit bientôt épuisé</span></p>
+        {% elseif champagne.stock > 0 %}
+        <p class="fw-bold">Stock: <span class="text-danger">Il en reste {{ champagne.stock }} !</span></p>
+        {% else %}
+        <p class="fw-bold">Stock: <span class="text-danger">Produit épuisé</span></p>
+        {% endif %}
         <button class="detailButton mt-4"><a href="{{ path('app_detail_champagne', {champagne: champagne.id})}}">Détails</a></button>
         {# <button><a href="{{ path('app_ajout_panier', {champagne: champagne.id})}}">Ajouter au panier</a></button> #}
         <button class="detailButton mt-4"><a href="{{ path('app_ajout_panier', {'id': champagne.id})}}">Ajouter au panier</a></button>
     {% if userInfo.isAdmin %}
         <button class="detailButton mt-4"><a href="{{ path('app_modifier_champagne', {champagne: champagne.id})}}">Modifier</a></button>
-        <button class="detailButton mt-4"><a href="{{ path('app_supprimer_champagne', {champagne: champagne.id})}}?token={{ csrf_token('supprimer') }}">Supprimer</a></button>
+        <button class="detailButton mt-4"><a href="{{ path('app_supprimer_champagne', {champagne: champagne.id})}}?token={{ csrf_token('supprimer') }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')">Supprimer</a></button>
     {% endif %}
     </article>
 
 {% endfor %}
 </section>
-
+</div>
 
 {% endblock %}
